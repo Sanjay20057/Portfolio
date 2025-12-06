@@ -449,4 +449,43 @@ body::before {
     max-width: 100%;
     height: auto;
 }
+/* --- NAVBAR FIX FOR MOBILE --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    flex-wrap: wrap;   /* allows items to move into next line */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;   /* lets menu wrap on mobile */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 5px 0;
+}
+
+/* On mobile, stack links in center */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+}
+
 
