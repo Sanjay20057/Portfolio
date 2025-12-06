@@ -1,0 +1,419 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f0f0f;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 20px 60px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+}
+.logo span {
+    color: #00ff66;
+}
+
+/* NAV LINKS */
+.navbar a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.navbar a:hover {
+    color: #00ff66;
+}
+
+/* BUTTON */
+.btn {
+    padding: 8px 16px;
+    border: 2px solid #00ff66;
+    border-radius: 8px;
+    color: #00ff66;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.btn:hover {
+    background: #00ff66;
+    color: black;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    background: linear-gradient(135deg, #0f0f0f, #001a10);
+}
+.hero-text h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+.hero-text h2 span { color: #00ff66; }
+.hero-text p {
+    margin: 10px 0 25px;
+    font-size: 18px;
+    color: #cfcfcf;
+}
+
+/* SECTIONS */
+.section {
+    padding: 100px 60px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #00ff66;
+}
+
+/* SKILLS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+.skill-card {
+    border: 1px solid #00ff66;
+    padding: 12px;
+    border-radius: 10px;
+    background: #0f0f0f;
+    transition: .3s;
+}
+.skill-card:hover {
+    background: #00ff66;
+    color: black;
+}
+
+/* PROJECT CARDS */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+.project-card {
+    background: #111;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: .3s;
+}
+.project-card:hover {
+    border-color: #00ff66;
+    transform: translateY(-5px);
+}
+.project-card a {
+    color: #00ff66;
+    text-decoration: none;
+}
+
+/* CONTACT */
+.contact-text {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 1px solid #333;
+}
+/* Social Buttons */
+.social-btn {
+    margin-left: 15px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 2px solid #00ff66;
+    color: #00ff66;
+}
+
+.social-btn:hover {
+    background: #00ff66;
+    color: black;
+}
+
+/* LinkedIn button color */
+.linkedin-btn {
+    border-color: #0A66C2 !important;
+    color: #0A66C2 !important;
+}
+
+.linkedin-btn:hover {
+    background: #0A66C2 !important;
+    color: white !important;
+}
+
+/* Hero buttons spacing */
+.hero-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+/* ==== ANALYSIS BACKGROUND IMAGE ==== */
+body {
+    background: url("/static/analysis-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Dark overlay so text stays readable */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* darken overlay */
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+/* ===== ABOUT SECTION WITH IMAGE ===== */
+
+.about-container {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about-image img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid #00ff66;
+    box-shadow: 0px 0px 20px rgba(0, 255, 102, 0.5);
+}
+
+.about-text {
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #dcdcdc;
+}
+/* ==== SKILL SECTION STYLE ==== */
+
+.skill-category-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.skill-category {
+    background: #0c0c0c;
+    border: 1px solid #00ff66;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 255, 102, 0.25);
+    transition: 0.3s;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.4);
+}
+
+.skill-category h3 {
+    font-size: 18px;
+    color: #00ff66;
+    margin-bottom: 15px;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-list span {
+    background: #111;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid #00ff66;
+    font-size: 14px;
+    color: white;
+    transition: 0.3s;
+}
+
+.skill-list span:hover {
+    background: #00ff66;
+    color: black;
+}
+/* Project image style */
+.project-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+}
+/* ---- PROJECT ROW (IMAGE LEFT, TEXT RIGHT) ---- */
+
+/* ---- PROJECT ROW (IMAGE LEFT, DETAILS RIGHT) ---- */
+
+.project-row {
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    background: #0f0f0f;
+    border: 1px solid #00ff66;
+    margin-bottom: 35px;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
+    transition: 0.3s;
+}
+
+.project-row:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 102, 0.45);
+}
+
+/* IMAGE (smaller size) */
+.project-row-image img {
+    width: 220px;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.35);
+}
+
+/* TEXT AREA */
+.project-row-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-row-details h3 {
+    color: #00ff66;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.project-row-details p {
+    color: #dcdcdc;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* BUTTON */
+.project-btn {
+    padding: 10px 20px;
+    border: 2px solid #00ff66;
+    color: #00ff66;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.project-btn:hover {
+    background: #00ff66;
+    color: black;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .project-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-row-image img {
+        width: 100%;
+        height: auto;
+    }
+}
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    overflow: hidden;
+}
+
+/* Background Image with Fade-in */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/your-background.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;               /* Start transparent */
+    animation: fadeIn 2s ease forwards; /* Fade in animation */
+    z-index: 1;
+}
+
+/* Optional dark overlay for better text visibility */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 3; /* Above background & overlay */
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
