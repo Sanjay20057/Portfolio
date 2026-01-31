@@ -3,76 +3,345 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sanjay Sharma – Resume</title>
+    <title>Resume - Sanjay Sharma</title>
 
-    <!-- SAME CSS -->
-    <link rel="stylesheet" href="/static/style.css" />
+    <!-- Main Portfolio CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 
-    <!-- SAME JS -->
-    <script defer src="/static/script.js"></script>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Match portfolio dark theme */
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+        }
+
+        /* Main Container */
+        .resume-wrapper {
+            min-height: 100vh;
+            padding-top: var(--nav-height);
+        }
+
+        .resume-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 150px;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            color: var(--green);
+            font-family: var(--font-mono);
+            font-size: var(--fz-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 10px 0;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+            transform: translateX(-5px);
+        }
+
+        .back-link::before {
+            content: "← ";
+        }
+
+        /* Header Section */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .resume-header h1 {
+            color: var(--lightest-slate);
+            font-size: clamp(40px, 5vw, 60px);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .resume-header p {
+            color: var(--slate);
+            font-size: var(--fz-xl);
+            margin-bottom: 30px;
+        }
+
+        /* Action Buttons */
+        .resume-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: var(--fz-sm);
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background-color: var(--green-tint);
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0 0 var(--green);
+        }
+
+        .action-btn.primary {
+            background-color: var(--green-tint);
+        }
+
+        /* Resume Viewer Card */
+        .resume-viewer {
+            background-color: var(--light-navy);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            transition: var(--transition);
+        }
+
+        .resume-viewer:hover {
+            box-shadow: 0 20px 30px -15px var(--navy-shadow);
+        }
+
+        .resume-viewer img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
+                        transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1080px) {
+            .resume-container {
+                padding: 60px 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 40px 50px;
+            }
+
+            .resume-header h1 {
+                font-size: 40px;
+            }
+
+            .resume-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .resume-viewer {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .resume-container {
+                padding: 30px 25px;
+            }
+
+            .resume-header h1 {
+                font-size: 32px;
+            }
+
+            .resume-header p {
+                font-size: var(--fz-md);
+            }
+        }
+
+        /* Icon styles */
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR (UNCHANGED) -->
+<!-- HEADER -->
 <header class="navbar">
     <nav>
-        <div class="logo">Portfolio</div>
+        <div class="logo">
+            <a href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                    <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             style="transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);"/>
+                    <text x="50"
+                          y="62"
+                          text-anchor="middle"
+                          fill="currentColor"
+                          font-size="32"
+                          font-family="Arial, sans-serif"
+                          font-weight="normal"
+                          letter-spacing="2">SS</text>
+                </svg>
+            </a>
+        </div>
 
-        <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
         <div class="nav-links" id="nav-links">
-            <a href="/">Home</a>
-            <a href="/#about">About</a>
-            <a href="/#projects">Projects</a>
-            <a href="/#contact">Contact</a>
+            <a href="/#about"><span class="nav-number">01.</span> About</a>
+            <a href="/#experience"><span class="nav-number">02.</span> Skills</a>
+            <a href="/#work"><span class="nav-number">03.</span> Project</a>
+            <a href="/#contact"><span class="nav-number">04.</span> Contact</a>
+            <a href="/resume" class="resume-btn">Resume</a>
         </div>
     </nav>
 </header>
 
-<!-- RESUME SECTION -->
-<section class="section" style="padding-top:140px;">
-    <h2 class="section-title">My Resume</h2>
+<!-- MAIN CONTENT -->
+<div class="resume-wrapper">
+    <div class="resume-container">
 
-    <!-- RESUME CARD -->
-    <div
-        class="resume-card"
-        style="
-            max-width:1100px;
-            margin:auto;
-            background:rgba(255,255,255,0.55);
-            backdrop-filter:blur(16px);
-            border-radius:26px;
-            overflow:hidden;
-            box-shadow:0 20px 50px rgba(0,0,0,0.15);
-        "
-    >
+        <!-- Back Link -->
+        <a href="/" class="back-link">Back to Portfolio</a>
 
-        <!-- DESKTOP PDF PREVIEW (UNCHANGED) -->
-        <iframe
-            src="/static/Sanjay_Resume.pdf"
-            class="resume-iframe"
-        ></iframe>
+        <!-- Header -->
+        <div class="resume-header">
+            <h1 class="fade-up">My Resume</h1>
+            <p class="fade-up">Data Scientist | Machine Learning Engineer | Python Developer</p>
+        </div>
 
-        <!-- MOBILE FALLBACK (ONLY FOR MOBILE) -->
-        <div class="resume-mobile">
-            <a href="/static/Sanjay_Resume.pdf" target="_blank" class="btn resume-open-btn">
-                📄 Open Resume
+        <!-- Action Buttons -->
+        <div class="resume-actions fade-up">
+            <a href="{{ url_for('static', filename='Sanjay_Resume.pdf') }}" download class="action-btn primary">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF
+            </a>
+            <a href="/case-studies#spotify" class="action-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                View Case Studies
+            </a>
+            <a href="/#contact" class="action-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contact Me
             </a>
         </div>
 
-    </div>
+        <!-- Optional: Tabs for different resume versions -->
+        <!-- Uncomment if you have multiple resume versions
+        <div class="resume-tabs">
+            <button class="tab-btn active" data-resume="main">Main Resume</button>
+            <button class="tab-btn" data-resume="technical">Technical Resume</button>
+        </div>
+        -->
 
-    <!-- ACTION BUTTONS -->
-    <div class="hero-buttons" style="margin-top:40px; text-align:center;">
-        <a href="/static/Sanjay_Resume.pdf" download class="btn">Download Resume</a>
-        <a href="/" class="btn">Back to Home</a>
-    </div>
-</section>
+        <!-- Resume Viewer -->
+        <div class="resume-viewer fade-up">
+            <img src="{{ url_for('static', filename='resume_images/Sanjay_Resume_image.jpg') }}"
+                 alt="Sanjay Sharma Resume"
+                 loading="lazy">
+        </div>
 
-<footer>
-    © 2025 Sanjay Sharma • All Rights Reserved
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="background: transparent; margin-top: 60px;">
+    <p style="color: #64748b;">Designed & Built by Sanjay Sharma</p>
 </footer>
+
+<script>
+// Mobile menu functionality (from your existing script.js)
+const mobileMenu = document.getElementById("mobile-menu");
+const navLinks = document.getElementById("nav-links");
+
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+            navLinks.classList.remove("active");
+            mobileMenu.classList.remove("active");
+        }
+    });
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(2);
+
+        window.location.href = '/' + this.getAttribute('href').substring(1);
+    });
+});
+
+// Fade-up animations on page load
+window.addEventListener('load', () => {
+    const fadeElements = document.querySelectorAll('.fade-up');
+    fadeElements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('appear');
+        }, index * 100);
+    });
+});
+</script>
 
 </body>
 </html>
