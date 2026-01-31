@@ -3,280 +3,380 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sanjay Sharma - Portfolio</title>
-
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="/static/style.css" />
-
-    <!-- AOS CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-    <!-- Your JS -->
-    <script defer src="/static/script.js"></script>
+    <title>Sanjay Sharma - Data Scientist</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 
 <body>
+    <!-- LOADING SCREEN -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2.5"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         style="color: var(--green, #64ffda);"/>
+                <text x="50"
+                      y="62"
+                      text-anchor="middle"
+                      fill="currentColor"
+                      font-size="32"
+                      font-family="Arial, sans-serif"
+                      font-weight="normal"
+                      letter-spacing="2"
+                      style="color: var(--green, #64ffda);">SS</text>
+            </svg>
+        </div>
+    </div>
 
-    <!-- HEADER -->
-    <header class="navbar" data-aos="fade-down" data-aos-duration="800">
+    <!-- SIDE EMAIL -->
+    <div class="fixed-email fade-up">
+        <a href="mailto:workingwithsanjay@gmail.com">workingwithsanjay@gmail.com</a>
+        <div class="email-line"></div>
+    </div>
+
+    <!-- SIDE SOCIAL -->
+    <div class="fixed-social fade-up">
+        <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <div class="social-line"></div>
+    </div>
+
+    <!-- HEADER NAV -->
+    <header class="navbar fade-up">
         <nav>
-            <div class="logo">Portfolio</div>
-            <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+            <div class="logo">
+                <a href="/">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                        <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2.5"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"/>
+                        <text x="50"
+                              y="62"
+                              text-anchor="middle"
+                              fill="currentColor"
+                              font-size="32"
+                              font-family="Arial, sans-serif"
+                              font-weight="normal"
+                              letter-spacing="2">SS</text>
+                    </svg>
+                </a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="nav-links" id="nav-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <a href="https://github.com/Sanjay20057" target="_blank" class="social-btn github-btn">GitHub</a>
-                <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" class="social-btn linkedin-btn">LinkedIn</a>
+                <a href="#about"><span class="nav-number">01.</span> About</a>
+                <a href="#experience"><span class="nav-number">02.</span> Skills</a>
+                <a href="#work"><span class="nav-number">03.</span> Project</a>
+                <a href="#contact"><span class="nav-number">04.</span> Contact</a>
+                <a href="/resume" class="resume-btn">Resume</a>
             </div>
         </nav>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero" style="background-image: url('/static/Background.jpg');">
-        <div class="hero-container">
-            <h2>Hi, I'm <span>Sanjay</span></h2>
-            <p class="hero-subtitle">
-                Data Science Graduate | Python, SQL, ML | Builds Real-Time Recommendation Systems & Interactive Dashboards
+    <section class="hero">
+        <div class="container">
+            <p class="intro-label fade-up">Hi, my name is</p>
+            <h1 class="big-heading fade-up">Sanjay Sharma.</h1>
+            <h2 class="big-heading subtitle fade-up">I build intelligent data solutions.</h2>
+            <p class="hero-description fade-up">
+                I'm a data scientist specializing in creating real-time recommendation systems
+                and interactive dashboards. Currently focused on building ML-powered applications
+                with modern UI using Python, SQL, and machine learning.
             </p>
-            <div class="hero-buttons">
-                <a href="https://github.com/Sanjay20057" target="_blank" class="btn">GitHub</a>
-                <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" class="btn">LinkedIn</a>
-            </div>
+            <a href="mailto:workingwithsanjay@gmail.com" class="cta-button fade-up">Get In Touch</a>
         </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="section about-section">
-        <h2 class="section-title" data-aos="fade-up">About Me</h2>
-        <div class="about-container">
-            <div class="about-image" data-aos="fade-right" data-aos-duration="800">
-                <img src="/static/WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg" alt="Sanjay Profile Photo">
-            </div>
-            <div class="about-text" data-aos="fade-left" data-aos-duration="800">
-                <p>
-                    Motivated Data Science graduate with strong proficiency in Python, SQL,
-                    statistics, and machine learning. I build real-world projects including
-                    recommendation systems, dashboards, and ML models with modern UI.
-                </p>
-                <div class="hero-buttons" style="margin-top: 20px;">
-                    <a href="/resume" class="btn">Preview Resume</a>
-                    <a href="/static/Sanjay_Resume.pdf" download class="btn">Download Resume</a>
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-heading fade-up">
+                <span class="section-number">01.</span>
+                About Me
+            </h2>
+
+            <div class="about-inner">
+                <div class="about-text">
+                    <p class="fade-up">
+                        Hello! I'm Sanjay, a data science graduate passionate about turning complex data
+                        into actionable insights. My journey in data science began with a curiosity about
+                        how algorithms could predict and recommend, leading me to build several
+                        real-world projects.
+                    </p>
+
+                    <p class="fade-up">
+                        Fast-forward to today, and I've built recommendation systems, interactive dashboards,
+                        and ML models that solve real problems. I focus on creating applications that are
+                        not just functional but also beautiful and user-friendly.
+                    </p>
+
+                    <p class="fade-up">
+                        Here are a few technologies I've been working with recently:
+                    </p>
+
+                    <ul class="skills-list fade-up">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Pandas & NumPy</li>
+                        <li>Scikit-Learn</li>
+                        <li>Streamlit</li>
+                        <li>Power BI & Tableau</li>
+                    </ul>
+
+                    <!-- RESUME BUTTONS -->
+                    <div class="resume-buttons fade-up">
+                        <a href="/resume" class="cta-button">View Resume</a>
+                        <a href="{{ url_for('static', filename='Sanjay_Resume.pdf') }}" download class="cta-button secondary">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="about-image fade-up">
+                    <div class="image-wrapper">
+                        <img src="{{ url_for('static', filename='WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg') }}" alt="Sanjay Sharma">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-        <h2 class="section-title" data-aos="fade-up">Skills</h2>
+    <!-- EXPERIENCE/SKILLS -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-heading fade-up">
+                <span class="section-number">02.</span>
+                What I've Learned
+            </h2>
 
-        <div class="skill-category-container">
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                <h3>Programming</h3>
-                <div class="skill-list">
-                    <span>Python</span><span>R</span><span>SQL</span>
-                </div>
-            </div>
+            <div class="experience-content">
+                <div class="skill-category-grid">
+                    <div class="skill-category fade-up">
+                        <h3><span>▹</span> Programming</h3>
+                        <p>Python, R, SQL</p>
+                    </div>
 
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                <h3>Data Analysis & Visualization</h3>
-                <div class="skill-list">
-                    <span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Excel</span><span>Power BI</span><span>Tableau</span>
-                </div>
-            </div>
+                    <div class="skill-category fade-up">
+                        <h3><span>▹</span> Data Analysis</h3>
+                        <p>Pandas, NumPy, Matplotlib, Excel, Power BI, Tableau</p>
+                    </div>
 
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                <h3>Machine Learning</h3>
-                <div class="skill-list">
-                    <span>Regression</span><span>Classification</span>
-                    <span>Clustering</span><span>Hyperparameter Tuning</span>
-                </div>
-            </div>
+                    <div class="skill-category fade-up">
+                        <h3><span>▹</span> Machine Learning</h3>
+                        <p>Regression, Classification, Clustering, Hyperparameter Tuning</p>
+                    </div>
 
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="400">
-                <h3>Tools & IDEs</h3>
-                <div class="skill-list">
-                    <span>VS Code</span><span>PyCharm</span><span>Jupyter</span>
-                    <span>Colab</span><span>Git</span>
-                </div>
-            </div>
+                    <div class="skill-category fade-up">
+                        <h3><span>▹</span> Tools & IDEs</h3>
+                        <p>VS Code, PyCharm, Jupyter, Colab, Git</p>
+                    </div>
 
-            <div class="skill-category" data-aos="fade-up" data-aos-delay="500">
-                <h3>Core Strengths</h3>
-                <div class="skill-list">
-                    <span>EDA</span><span>Data Cleaning</span>
-                    <span>Feature Engineering</span><span>Model Evaluation</span>
-                    <span>Statistical Analysis</span>
+                    <div class="skill-category fade-up">
+                        <h3><span>▹</span> Core Strengths</h3>
+                        <p>EDA, Data Cleaning, Feature Engineering, Model Evaluation, Statistical Analysis</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section">
-        <h2 class="section-title" data-aos="fade-up">Projects</h2>
+    <section id="work" class="section">
+        <div class="container">
+            <h2 class="section-heading fade-up">
+                <span class="section-number">03.</span>
+                Some Things I've Built
+            </h2>
 
-        <div class="project-row" data-aos="fade-up" data-aos-delay="100">
-            <div class="project-row-image">
-                <img src="/static/Spotify.png" alt="Spotify UI" class="project-preview"
-     data-title="Spotify Real-Time Recommendation System"
-     data-tech="Python, Streamlit, Spotify API, Recommendation System, Real-Time Search"
-     data-desc="A real-time music search & recommendation system with Spotify-styled UI and artist insights."
-     data-github="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time"
-     data-live="https://spotify-recommendation-system-real-time.streamlit.app"
-     data-images="/static/Spotify.png,/static/Spotify2.png,/static/Spotify3.png,/static/Spotify4.png,/static/Spotify5.png,/static/Spotify6.png,/static/Spotify7.png">
-            </div>
-            <div class="project-row-details">
-                <h3>Spotify Real-Time Recommendation System</h3>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Spotify API</span>
-                    <span>Recommendation System</span>
-                    <span>Real-Time Search</span>
+            <!-- Featured Project 1 - Spotify -->
+            <div class="featured-project fade-up">
+                <div class="project-content">
+                    <p class="project-overline">Featured Project</p>
+                    <h3 class="project-title">Spotify Real-Time Recommendation System</h3>
+                    <div class="project-description">
+                        <p>
+                            A real-time music search and recommendation system with a Spotify-styled UI.
+                            Leverages the Spotify API to provide personalized song recommendations and
+                            artist insights with an intuitive, modern interface.
+                        </p>
+                    </div>
+                    <ul class="project-tech-list">
+                        <li>Python</li>
+                        <li>Streamlit</li>
+                        <li>Spotify API</li>
+                        <li>Recommendation System</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                        <a href="/case-studies#spotify" aria-label="Case Study">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </a>
+                    </div>
                 </div>
-                <p>A real-time music search & recommendation system with Spotify-styled UI and artist insights.</p>
-                <a href="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time" target="_blank" class="btn project-btn">View Code</a>
-                <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" class="btn project-btn">View Deployed App</a>
-                <a href="/case-studies#spotify" class="btn project-btn">Case Study</a>
+                <div class="project-image">
+                    <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank">
+                        <img src="{{ url_for('static', filename='Spotify.png') }}" alt="Spotify Recommendation System">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Featured Project 2 - Cyber Threat -->
+            <div class="featured-project reverse fade-up">
+                <div class="project-content">
+                    <p class="project-overline">Featured Project</p>
+                    <h3 class="project-title">Cyber Threat Detection Suite</h3>
+                    <div class="project-description">
+                        <p>
+                            Complete cyber threat detection suite with real-time analysis and threat
+                            classification capabilities. Features advanced ML algorithms for identifying
+                            malicious URLs, phishing attempts, and network anomalies with interactive
+                            visualizations and reporting.
+                        </p>
+                    </div>
+                    <ul class="project-tech-list">
+                        <li>Python</li>
+                        <li>Streamlit</li>
+                        <li>Machine Learning</li>
+                        <li>Cybersecurity</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                        <a href="/case-studies#cyber" aria-label="Case Study">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-image">
+                    <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank">
+                        <img src="{{ url_for('static', filename='cyber_threat.png') }}" alt="Cyber Threat Detection Suite">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Other Projects Grid -->
+            <div class="other-projects">
+                <h3 class="other-projects-heading fade-up">Other Noteworthy Projects</h3>
+
+                <div class="projects-grid">
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="project-card-links">
+                                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="/case-studies#ipl">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h4>IPL Data Analysis Dashboard</h4>
+                        <p>Comprehensive analysis dashboard covering 12 seasons of IPL cricket data with interactive visualizations.</p>
+                        <ul class="project-card-tech">
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>Matplotlib</li>
+                            <li>Streamlit</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="project-card-links">
+                                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="/case-studies#movie">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h4>Movie Recommendation System</h4>
+                        <p>Content-based movie recommendation system using TF-IDF vectorization and cosine similarity to suggest similar movies.</p>
+                        <ul class="project-card-tech">
+                            <li>Python</li>
+                            <li>TF-IDF</li>
+                            <li>Scikit-Learn</li>
+                            <li>NLP</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                            <div class="project-card-links">
+                                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="/case-studies#car">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h4>Used Car Price Prediction</h4>
+                        <p>ML regression model to predict used car prices using feature engineering and multiple algorithms.</p>
+                        <ul class="project-card-tech">
+                            <li>Python</li>
+                            <li>Regression</li>
+                            <li>Feature Engineering</li>
+                            <li>Scikit-Learn</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="project-row" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-row-image">
-                <img src="/static/IPL.png" alt="IPL Dashboard UI" class="project-preview"
-     data-title="IPL Data Analysis Dashboard"
-     data-tech="Python, Pandas, Matplotlib, Data Analysis, Visualization"
-     data-desc="12-season cricket analysis dashboard using Pandas + Matplotlib."
-     data-github="https://github.com/Sanjay20057/IPL_Analysis"
-     data-live="https://iplanalysis2008-2019.streamlit.app"
-     data-images="/static/IPL.png,/static/IPL2.png,/static/IPL3.png,/static/IPL4.png,/static/IPL5.png,/static/IPL6.png,/static/IPL7.png,/static/IPL8.png">
-
-            </div>
-            <div class="project-row-details">
-                <h3>IPL Data Analysis Dashboard</h3>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Pandas</span>
-                    <span>Matplotlib</span>
-                    <span>Data Analysis</span>
-                    <span>Visualization</span>
-                </div>
-                <p>12-season cricket analysis dashboard using Pandas + Matplotlib.</p>
-                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" class="btn project-btn">View Code</a>
-                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" class="btn project-btn">View Deployed App</a>
-                <a href="/case-studies#ipl" class="btn project-btn">Case Study</a>
-            </div>
-        </div>
-
-        <div class="project-row" data-aos="fade-up" data-aos-delay="300">
-            <div class="project-row-image">
-                <img src="/static/Movie.png" alt="Movie Recommendation UI" class="project-preview"
-     data-title="Movie Recommendation System"
-     data-tech="Python, TF-IDF, Cosine Similarity, Scikit-Learn, NLP"
-     data-desc="Content-based movie recommendation system using TF-IDF & cosine similarity."
-     data-github="https://github.com/Sanjay20057/Movie-Recommender-System"
-     data-live="https://movie-recommender-system-2005.streamlit.app"
-     data-images="/static/Movie.png,/static/Movie2.png,/static/Movie3.png">
-            </div>
-            <div class="project-row-details">
-                <h3>Movie Recommendation System</h3>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>TF-IDF</span>
-                    <span>Cosine Similarity</span>
-                    <span>Scikit-Learn</span>
-                    <span>NLP</span>
-                </div>
-                <p>Content-based movie recommendation system using TF-IDF & cosine similarity.</p>
-                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" class="btn project-btn">View Code</a>
-                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" class="btn project-btn">View Deployed App</a>
-                <a href="/case-studies#movie" class="btn project-btn">Case Study</a>
-            </div>
-        </div>
-
-        <div class="project-row" data-aos="fade-up" data-aos-delay="400">
-            <div class="project-row-image">
-                <img src="/static/Car-Price.png" alt="Car Price Prediction UI" class="project-preview"
-     data-title="Used Car Price Prediction"
-     data-tech="Python, Regression, Feature Engineering, Scikit-Learn, Machine Learning"
-     data-desc="ML regression model to predict car prices using feature engineering."
-     data-github="https://github.com/Sanjay20057/Car-Price-Prediction"
-     data-live="https://car-price-prediction-2005.streamlit.app"
-     data-images="/static/Car-Price.png,/static/Car-Price2.png,/static/Car-Price3.png">
-            </div>
-            <div class="project-row-details">
-                <h3>Used Car Price Prediction</h3>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Regression</span>
-                    <span>Feature Engineering</span>
-                    <span>Scikit-Learn</span>
-                    <span>Machine Learning</span>
-                </div>
-                <p>ML regression model to predict car prices using feature engineering.</p>
-                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" class="btn project-btn">View Code</a>
-                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" class="btn project-btn">View Deployed App</a>
-                <a href="/case-studies#car" class="btn project-btn">Case Study</a>
-            </div>
-        </div>
-
-        <!-- FIXED Cyber Threat Project -->
-        <div class="project-row" data-aos="fade-up" data-aos-delay="500">
-            <div class="project-row-image">
-                <img src="/static/CyberThreat.png" alt="Cyber Threat Detection UI" class="project-preview"
-     data-title="Cyber Threat Detection Suite"
-     data-tech="Python, Streamlit, Cybersecurity, Threat Detection, ML/AI"
-     data-desc="A complete cyber threat detection suite with real-time analysis and threat classification."
-     data-github="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite"
-     data-live="https://cyber-threat-detection-suite.streamlit.app/"
-     data-images="/static/CyberThreat.png,/static/CyberThreat2.png,/static/CyberThreat3.png,/static/CyberThreat4.png">
-            </div>
-            <div class="project-row-details">
-                <h3>Cyber Threat Detection Suite</h3>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Streamlit</span>
-                    <span>Cybersecurity</span>
-                    <span>Threat Detection</span>
-                    <span>ML/AI</span>
-                </div>
-                <p>A complete cyber threat detection suite with real-time analysis and threat classification.</p>
-                <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" class="btn project-btn">View Code</a>
-                <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" class="btn project-btn">View Deployed App</a>
-                <a href="/case-studies#cyber" class="btn project-btn">Case Study</a>
-            </div>
-        </div>
-
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="section-title">Contact</h2>
-        <p class="contact-text">📧 workingwithsanjay@gmail.com</p>
-        <p class="contact-text">📞 +91 9167221558</p>
-        <div class="hero-buttons">
-            <a href="mailto:workingwithsanjay@gmail.com" class="btn">Email Me</a>
-            <a href="https://github.com/Sanjay20057" target="_blank" class="btn">GitHub</a>
-            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" class="btn linkedin-btn">LinkedIn</a>
+    <section id="contact" class="section">
+        <div class="container contact-container">
+            <p class="section-number fade-up">04. What's Next?</p>
+            <h2 class="contact-heading fade-up">Get In Touch</h2>
+            <p class="contact-description fade-up">
+                I'm currently looking for new opportunities and my inbox is always open.
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:workingwithsanjay@gmail.com" class="cta-button fade-up">Say Hello</a>
         </div>
     </section>
 
-    <footer data-aos="fade-up" data-aos-delay="100">
-        © 2025 Sanjay Sharma • All Rights Reserved
+    <footer class="fade-up">
+        <p>Designed & Built by Sanjay Sharma</p>
     </footer>
 
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({
-          duration: 800,
-          once: true
-        });
-      });
-    </script>
 </body>
 </html>
