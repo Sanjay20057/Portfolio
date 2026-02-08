@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanjay Sharma | Certificates</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo/Logo.png') }}" />
+
+    <!-- Main Portfolio CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --navy:            #0a192f;
+            --light-navy:      #112240;
+            --lightest-navy:   #233554;
+            --navy-shadow:     rgba(2,12,27,.7);
+            --slate:           #8892b0;
+            --light-slate:     #a8b2d1;
+            --lightest-slate:  #ccd6f6;
+            --green:           #64ffda;
+            --green-tint:      rgba(100,255,218,.1);
+            --mono:            'Fira Code', 'SF Mono', monospace;
+            --easing:          cubic-bezier(0.645,0.045,0.355,1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: var(--mono);
+            background: var(--navy);
+            color: var(--slate);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ─── PAGE WRAPPER ─── */
+        .cert-wrapper {
+            min-height: 100vh;
+            padding-top: var(--nav-height);
+        }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            text-align: center;
+            padding: 75px 24px 40px;
+            animation: fadeDown .6s var(--easing) both;
+        }
+        @keyframes fadeDown {
+            from { opacity:0; transform:translateY(-18px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .page-hero .label {
+            color: var(--green);
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .page-hero h1 {
+            color: var(--lightest-slate);
+            font-size: clamp(26px,5vw,40px);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .page-hero p {
+            color:var(--slate);
+            font-size:13px;
+            max-width:480px;
+            margin:0 auto;
+            line-height:1.6;
+        }
+
+        .divider {
+            width:50px;
+            height:2px;
+            background:var(--green);
+            margin:28px auto 50px;
+            border-radius:1px;
+        }
+
+        /* ─── CERTIFICATES GRID ─── */
+        .certs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        /* ─── CERTIFICATE CARD ─── */
+        .cert-card {
+            background: var(--light-navy);
+            border-radius: 8px;
+            border: 1px solid rgba(100,255,218,.08);
+            overflow: hidden;
+            transition: all .3s var(--easing);
+            animation: cardUp .5s var(--easing) both;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cert-card:nth-child(1) { animation-delay: .1s; }
+        .cert-card:nth-child(2) { animation-delay: .2s; }
+        .cert-card:nth-child(3) { animation-delay: .3s; }
+        .cert-card:nth-child(4) { animation-delay: .4s; }
+        .cert-card:nth-child(5) { animation-delay: .5s; }
+        .cert-card:nth-child(6) { animation-delay: .6s; }
+
+        @keyframes cardUp {
+            from { opacity:0; transform:translateY(30px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px var(--navy-shadow);
+            border-color: rgba(100,255,218,.2);
+        }
+
+        /* ── card header ── */
+        .cert-header {
+            padding: 24px 20px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            border-bottom: 1px solid rgba(100,255,218,.07);
+        }
+
+        .cert-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid var(--green);
+            background: var(--lightest-navy);
+            flex-shrink: 0;
+        }
+
+        .cert-title-area {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cert-org {
+            color: var(--lightest-slate);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .cert-name {
+            color: var(--slate);
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        /* ── card meta ── */
+        .cert-meta {
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            font-size: 11px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--slate);
+        }
+
+        .meta-item svg {
+            width: 12px;
+            height: 12px;
+            color: var(--green);
+            opacity: .7;
+            flex-shrink: 0;
+        }
+
+        .domain-tag {
+            display: inline-block;
+            background: var(--green-tint);
+            border: 1px solid rgba(100,255,218,.2);
+            color: var(--green);
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            letter-spacing: .5px;
+        }
+
+        /* ── card preview ── */
+        .cert-preview {
+            padding: 16px 20px;
+            border-top: 1px solid rgba(100,255,218,.07);
+        }
+
+        .cert-preview-img {
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            background: var(--lightest-navy);
+            cursor: pointer;
+        }
+
+        .cert-preview-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .3s var(--easing);
+        }
+
+        .cert-preview-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ── card actions ── */
+        .cert-actions {
+            padding: 16px 20px 20px;
+            display: flex;
+            gap: 8px;
+            border-top: 1px solid rgba(100,255,218,.07);
+        }
+
+        .cert-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 12px;
+            font-size: 11px;
+            font-family: var(--mono);
+            color: var(--green);
+            background: transparent;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all .25s var(--easing);
+            cursor: pointer;
+        }
+
+        .cert-btn svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .cert-btn:hover {
+            background: var(--green);
+            color: var(--navy);
+        }
+
+        .cert-btn.secondary {
+            border-color: rgba(100,255,218,.3);
+            color: var(--slate);
+        }
+
+        .cert-btn.secondary:hover {
+            border-color: var(--green);
+            color: var(--green);
+            background: transparent;
+        }
+
+        /* ─── MODAL ─── */
+        .cert-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10,25,47,.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        .cert-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn .3s var(--easing);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cert-modal-content {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            animation: modalSlideUp .4s var(--easing);
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .cert-modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 24px 48px rgba(0,0,0,.5);
+        }
+
+        .cert-modal-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--light-navy);
+            border: 1px solid var(--green);
+            color: var(--green);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .25s var(--easing);
+            z-index: 1001;
+        }
+
+        .cert-modal-close:hover {
+            background: var(--green);
+            color: var(--navy);
+            transform: rotate(90deg);
+        }
+
+        .cert-modal-close svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ─── LOADING ANIMATION ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
+                        transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width:768px) {
+            .cert-wrapper {
+                padding-top: 0;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-modal-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .cert-modal-content {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width:480px) {
+            .cert-header { padding: 20px 16px 16px; }
+            .cert-logo { width: 45px; height: 45px; }
+            .cert-meta { padding: 14px 16px; }
+            .cert-preview { padding: 14px 16px; }
+            .cert-actions { padding: 14px 16px 16px; flex-direction: column; }
+            .cert-btn { width: 100%; }
+            .cert-modal-content { max-width: 95%; }
+        }
+
+        /* Touch device optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .cert-card:hover {
+                transform: none;
+            }
+
+            .cert-card:active {
+                transform: translateY(-4px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER NAV (Same as Case Studies) -->
+<header class="navbar fade-up">
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                    <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2.5"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             style="transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);"/>
+                    <text x="50"
+                          y="62"
+                          text-anchor="middle"
+                          fill="currentColor"
+                          font-size="32"
+                          font-family="Arial, sans-serif"
+                          font-weight="normal"
+                          letter-spacing="2">SS</text>
+                </svg>
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="/#about"><span class="nav-number">01.</span> About</a>
+            <a href="/#experience"><span class="nav-number">02.</span> Skills</a>
+            <a href="/#work"><span class="nav-number">03.</span> Project</a>
+            <a href="/#contact"><span class="nav-number">04.</span> Contact</a>
+            <a href="/resume" class="resume-btn">Resume</a>
+        </div>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="cert-wrapper">
+
+<!-- HERO -->
+<header class="page-hero fade-up">
+    <p class="label">Achievements</p>
+    <h1>Certificates</h1>
+    <p>Professional credentials and recognitions earned through research and coursework.</p>
+</header>
+<div class="divider"></div>
+
+<!-- CERTIFICATES GRID -->
+<section class="certs-container">
+    <div class="certs-grid">
+
+        <!-- Certificate 1: RedKross -->
+        <article class="cert-card fade-up" id="redkross">
+            <div class="cert-header">
+                <img src="{{ url_for('static', filename='Logo/Redkross-Research-Foundation-Logo.png') }}"
+                     alt="RedKross Logo"
+                     class="cert-logo">
+                <div class="cert-title-area">
+                    <h3 class="cert-org">RedKross Research Foundation</h3>
+                    <p class="cert-name">Cyber Security Intern</p>
+                </div>
+            </div>
+
+            <div class="cert-meta">
+                <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Dec 2025 – Feb 2026
+                </div>
+                <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Pune, Mumbai
+                </div>
+                <span class="domain-tag">Cyber Security</span>
+            </div>
+
+            <div class="cert-preview">
+                <div class="cert-preview-img" onclick="openModal('redkross')">
+                    <img src="{{ url_for('static', filename='Certificate_images/Gemini_Generated_Image_pz42gnpz42gnpz42.png') }}"
+                         alt="RedKross Certificate">
+                </div>
+            </div>
+
+            <div class="cert-actions">
+                <a href="{{ url_for('static', filename='Certificate_images/Gemini_Generated_Image_pz42gnpz42gnpz42.png') }}"
+                   class="cert-btn"
+                   download>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                </a>
+                <button class="cert-btn secondary" onclick="openModal('redkross')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                    View Full
+                </button>
+            </div>
+        </article>
+
+        <!-- Certificate 2: Function in Python -->
+        <article class="cert-card fade-up" id="certificate2">
+            <div class="cert-header">
+                <img src="{{ url_for('static', filename='Logo/Great-Learning-Logo.png') }}"
+                     alt="Great Learning Logo"
+                     class="cert-logo">
+                <div class="cert-title-area">
+                    <h3 class="cert-org">Great Learning</h3>
+                    <p class="cert-name">Function In Python</p>
+                </div>
+            </div>
+
+            <div class="cert-meta">
+                <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    September 2023
+                </div>
+                <span class="domain-tag">Data Science</span>
+            </div>
+
+            <div class="cert-preview">
+                <div class="cert-preview-img" onclick="openModal('certificate2')">
+                    <img src="{{ url_for('static', filename='Certificate_images/Function-in-Python.jpg') }}"
+                         alt="Function in Python Certificate">
+                </div>
+            </div>
+
+            <div class="cert-actions">
+                <a href="{{ url_for('static', filename='Certificate_pdf/Function-in-Python.pdf') }}"
+                   class="cert-btn"
+                   download>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                </a>
+                <button class="cert-btn secondary" onclick="openModal('certificate2')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                    View Full
+                </button>
+            </div>
+        </article>
+
+        <!-- Certificate 3: Introduction of R -->
+        <article class="cert-card fade-up" id="certificate3">
+            <div class="cert-header">
+                <img src="{{ url_for('static', filename='Logo/Great-Learning-Logo.png') }}"
+                     alt="Great Learning Logo"
+                     class="cert-logo">
+                <div class="cert-title-area">
+                    <h3 class="cert-org">Great Learning</h3>
+                    <p class="cert-name">Introduction Of R</p>
+                </div>
+            </div>
+
+            <div class="cert-meta">
+                <div class="meta-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    September 2023
+                </div>
+                <span class="domain-tag">Data Science</span>
+            </div>
+
+            <div class="cert-preview">
+                <div class="cert-preview-img" onclick="openModal('certificate3')">
+                    <img src="{{ url_for('static', filename='Certificate_images/Introduction-of-R.jpg') }}"
+                         alt="Introduction of R Certificate">
+                </div>
+            </div>
+
+            <div class="cert-actions">
+                <a href="{{ url_for('static', filename='Certificate_pdf/Introduction-of-R.pdf') }}"
+                   class="cert-btn"
+                   download>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                </a>
+                <button class="cert-btn secondary" onclick="openModal('certificate3')">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                    View Full
+                </button>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+</div>
+
+<!-- Modal for full certificate view -->
+<div class="cert-modal" id="certModal">
+    <button class="cert-modal-close" onclick="closeModal(); event.stopPropagation();">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="cert-modal-content" onclick="event.stopPropagation()">
+        <img id="modalImage" src="" alt="Certificate Full View">
+    </div>
+</div>
+
+<!-- ENHANCED FOOTER (Same as Case Studies) -->
+<footer class="fade-up">
+    <!-- Mobile Social Icons -->
+    <div class="footer-social-mobile">
+        <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+    </div>
+
+    <!-- Footer Text with GitHub Link -->
+    <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
+        <p>Designed & Built by Sanjay Sharma</p>
+    </a>
+</footer>
+
+<script>
+    // Certificate Modal Functions
+    function openModal(certId) {
+        console.log('Opening modal for:', certId);
+
+        const modal = document.getElementById('certModal');
+        const modalImg = document.getElementById('modalImage');
+        const certCard = document.getElementById(certId);
+
+        if (!modal || !modalImg || !certCard) {
+            console.error('Modal elements not found');
+            return;
+        }
+
+        // Get the certificate image from the card
+        const certImage = certCard.querySelector('.cert-preview-img img');
+
+        if (!certImage) {
+            console.error('Certificate image not found');
+            return;
+        }
+
+        console.log('Setting modal image src to:', certImage.src);
+
+        // Set modal image source
+        modalImg.src = certImage.src;
+        modalImg.alt = certImage.alt;
+
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        console.log('Closing modal');
+
+        const modal = document.getElementById('certModal');
+
+        if (!modal) {
+            console.error('Modal not found');
+            return;
+        }
+
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking on the background
+    document.getElementById('certModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('certModal');
+            if (modal && modal.classList.contains('active')) {
+                closeModal();
+            }
+        }
+    });
+
+    // Fade-up animation on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const fadeElements = document.querySelectorAll('.fade-up');
+        fadeElements.forEach((element, index) => {
+            setTimeout(() => {
+                element.classList.add('appear');
+            }, index * 100);
+        });
+    });
+
+    // Log when page loads
+    console.log('Certificate page loaded successfully');
+</script>
+
+</body>
+</html>
