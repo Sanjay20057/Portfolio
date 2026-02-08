@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo/Logo.png') }}" />
 
     <!-- Main Portfolio CSS -->
-    <link rel="stylesheet" href="{{ url_for(filename='style.css') }}" />
-    <script defer src="{{ url_for(filename='script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 
     <style>
         body {
@@ -98,4 +98,92 @@
         }
 
         .error-btn:hover {
+        transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(100, 255, 218, 0.5);
+        }
 
+        .error-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .error-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+            }
+            92%, 96% {
+                text-shadow:
+                    2px 2px 0 rgba(255, 0, 0, 0.5),
+                    -2px -2px 0 rgba(0, 255, 255, 0.5);
+            }
+            94% {
+                text-shadow:
+                    -2px 2px 0 rgba(255, 0, 0, 0.5),
+                    2px -2px 0 rgba(0, 255, 255, 0.5);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 40px 25px;
+            }
+
+            .error-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-wrapper">
+        <div class="error-container">
+            <div class="error-code glitch error-animation">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">
+                Oops! The page you're looking for seems to have wandered off into the digital void.
+                It might have been moved, deleted, or perhaps it never existed.
+            </p>
+            <div class="error-links">
+                <a href="{{ url_for('index') }}" class="error-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 2L1.5 8L6.5 14M2 8H14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Go Home
+                </a>
+                <a href="{{ url_for('contact') }}" class="error-btn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3H14V13H2V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 3L8 9L14 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
