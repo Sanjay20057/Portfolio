@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sanjay Sharma</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='Logo/Logo.png') }}" />
-    <link rel="stylesheet" href="{{ url_for('style.css') }}" />
-    <script defer src="{{ url_for('script.js') }}"></script>
+    <link rel="icon" type="image/png" href="static/Logo/Logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -80,14 +80,14 @@
                 <span></span>
             </div>
             <div class="nav-links" id="nav-links">
-    <a href="#about"><span class="nav-number">01.</span> About</a>
-    <a href="#experience"><span class="nav-number">02.</span> Experience</a>
-    <a href="#skills"><span class="nav-number">03.</span> Skills</a>
-    <a href="#work"><span class="nav-number">04.</span> Project</a>
-    <a href="#contact"><span class="nav-number">05.</span> Contact</a>
-    <a href="/certificates"><span class="nav-number">06.</span> Achivements</a>
-    <a href="/resume" class="resume-btn">Resume</a>
-</div>
+                <a href="#about"><span class="nav-number">01.</span> About</a>
+                <a href="#experience"><span class="nav-number">02.</span> Experience</a>
+                <a href="#skills"><span class="nav-number">03.</span> Skills</a>
+                <a href="#work"><span class="nav-number">04.</span> Project</a>
+                <a href="#contact"><span class="nav-number">05.</span> Contact</a>
+                <a href="certificates.html"><span class="nav-number">06.</span> Achivements</a>
+                <a href="resume.html" class="resume-btn">Resume</a>
+            </div>
         </nav>
     </header>
 
@@ -143,16 +143,14 @@
 
                 <div class="about-image fade-up">
                     <div class="image-wrapper">
-                        <img src="{{ url_for('static', filename='WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg') }}" alt="Sanjay Sharma">
+                        <img src="static/WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg" alt="Sanjay Sharma">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===================== -->
-    <!-- EXPERIENCE SECTION    -->
-    <!-- ===================== -->
+    <!-- EXPERIENCE SECTION -->
     <section id="experience" class="section">
         <div class="container">
             <h2 class="section-heading fade-up">
@@ -160,10 +158,7 @@
                 Where I've Worked
             </h2>
 
-            <!-- Brittany Chiang–style tabbed experience -->
             <div class="experience-tabbed fade-up">
-
-                <!-- Left rail: tab buttons + sliding indicator -->
                 <div class="tab-nav" role="tablist">
                     <div class="tab-indicator"></div>
                     <button class="tab-btn active"
@@ -175,17 +170,13 @@
                     </button>
                 </div>
 
-                <!-- Right panel: job details -->
                 <div class="tab-panels">
-
                     <div class="tab-panel active" id="tab-panel-redkross" role="tabpanel">
-                        <!-- Title row -->
                         <h3 class="tab-panel__title">
                             Cyber Security Intern
                             <span class="tab-panel__company">@ RedKross Research Foundation</span>
                         </h3>
 
-                        <!-- Date + location -->
                         <p class="tab-panel__date">
                             <span class="tab-panel__date-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -198,23 +189,19 @@
                             </span>
                         </p>
 
-                        <!-- Duties list (BC uses ▹ bullets) -->
                         <ul class="tab-panel__duties">
                             <li>Developed and trained machine learning models to detect phishing URLs and malicious network traffic in real time, achieving 94% detection accuracy.</li>
                             <li>Built end-to-end cybersecurity dashboards using Python and Streamlit to visualize live threat analytics for the Security Operations team.</li>
                             <li>Performed vulnerability assessments on internal systems and produced detailed security reports with actionable remediation recommendations.</li>
                         </ul>
 
-                        <!-- Certificate link -->
-                        <a href="/certificates#redkross" class="tab-panel__cert">
+                        <a href="certificates.html#redkross" class="tab-panel__cert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                             View Certificate
                         </a>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -290,14 +277,11 @@
                         <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" aria-label="External Link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
-                        <a href="/case-studies#spotify" aria-label="Case Study">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        </a>
                     </div>
                 </div>
                 <div class="project-image">
                     <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank">
-                        <img src="{{ url_for('static', filename='Spotify.png') }}" alt="Spotify Recommendation System">
+                        <img src="static/Spotify.png" alt="Spotify Recommendation System">
                     </a>
                 </div>
             </div>
@@ -328,14 +312,11 @@
                         <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" aria-label="External Link">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
-                        <a href="/case-studies#cyber" aria-label="Case Study">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                        </a>
                     </div>
                 </div>
                 <div class="project-image">
                     <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank">
-                        <img src="{{ url_for('static', filename='cyber_threat.png') }}" alt="Cyber Threat Detection Suite">
+                        <img src="static/cyber_threat.png" alt="Cyber Threat Detection Suite">
                     </a>
                 </div>
             </div>
@@ -354,9 +335,6 @@
                                 </a>
                                 <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                </a>
-                                <a href="/case-studies#ipl">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                                 </a>
                             </div>
                         </div>
@@ -380,9 +358,6 @@
                                 <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
-                                <a href="/case-studies#movie">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                                </a>
                             </div>
                         </div>
                         <h4>Movie Recommendation System</h4>
@@ -404,9 +379,6 @@
                                 </a>
                                 <a href="https://car-price-prediction-2005.streamlit.app" target="_blank">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                                </a>
-                                <a href="/case-studies#car">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
                                 </a>
                             </div>
                         </div>
@@ -457,5 +429,3 @@
 
 </body>
 </html>
-
-
