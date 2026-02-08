@@ -268,6 +268,19 @@
     </div>
 </div>
 
+<!-- Modal for full resume view -->
+<div class="resume-modal" id="resumeModal">
+    <button class="resume-modal-close" onclick="closeResumeModal(); event.stopPropagation();">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+    </button>
+    <div class="resume-modal-content" onclick="event.stopPropagation()">
+        <img id="modalResumeImage" src="static/Resume_image/Sanjay_Resume_image.jpg" alt="Sanjay Sharma Resume - Full View">
+    </div>
+</div>
+
 <script>
 const mobileMenu = document.getElementById("mobile-menu");
 const navLinks = document.getElementById("nav-links");
@@ -324,6 +337,7 @@ window.addEventListener('load', () => {
 
 </body>
 </html>
+
 
 
 
