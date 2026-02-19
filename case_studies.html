@@ -9,14 +9,12 @@
     <script defer src="static/script.js"></script>
 
     <style>
-        /* Override body for case study page */
         body {
             background-color: var(--navy);
             color: var(--slate);
             overflow-x: hidden;
         }
 
-        /* Main Layout */
         .case-study-wrapper {
             min-height: 100vh;
             padding-top: var(--nav-height);
@@ -47,9 +45,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
-        .mobile-case-nav::-webkit-scrollbar {
-            display: none;
-        }
+        .mobile-case-nav::-webkit-scrollbar { display: none; }
 
         .mobile-nav-container {
             display: flex;
@@ -138,31 +134,20 @@
         }
 
         /* Content Area */
-        .case-content {
-            max-width: 900px;
-        }
+        .case-content { max-width: 900px; }
 
         .case-card {
             display: none;
             animation: fadeUp 0.6s ease;
         }
 
-        .case-card.active {
-            display: block;
-        }
+        .case-card.active { display: block; }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Card Header */
         .case-card h2 {
             color: var(--lightest-slate);
             font-size: clamp(24px, 5vw, 40px);
@@ -188,16 +173,13 @@
             font-weight: 500;
         }
 
-        /* Case Sections */
         .case-section {
             margin-bottom: 35px;
             padding-bottom: 25px;
             border-bottom: 1px solid var(--lightest-navy);
         }
 
-        .case-section:last-of-type {
-            border-bottom: none;
-        }
+        .case-section:last-of-type { border-bottom: none; }
 
         .case-section strong {
             display: block;
@@ -276,51 +258,25 @@
         .nav-btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
+            top: 0; left: 0;
+            width: 0; height: 100%;
             background-color: rgba(100, 255, 218, 0.1);
             transition: width 0.3s var(--easing);
             z-index: -1;
         }
 
-        .nav-btn:hover::before {
-            width: 100%;
-        }
+        .nav-btn:hover::before { width: 100%; }
+        .nav-btn:hover { transform: translate(-2px, -2px); box-shadow: 2px 2px 0 0 var(--green); }
+        .nav-btn:active { transform: translate(0, 0); box-shadow: none; }
+        .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .nav-btn:disabled:hover { transform: none; box-shadow: none; background-color: transparent; }
+        .nav-btn:disabled::before { width: 0; }
 
-        .nav-btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 2px 2px 0 0 var(--green);
-        }
-
-        .nav-btn:active {
-            transform: translate(0, 0);
-            box-shadow: none;
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .nav-btn:disabled:hover {
-            transform: none;
-            box-shadow: none;
-            background-color: transparent;
-        }
-
-        .nav-btn:disabled::before {
-            width: 0;
-        }
-
-        /* Back to Top Button */
+        /* Back to Top */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
             background-color: var(--green);
             color: var(--navy);
             border: none;
@@ -335,204 +291,66 @@
             z-index: 100;
             font-size: 24px;
             font-weight: bold;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(100,255,218,0.4); }
+        .back-to-top:active { transform: translateY(-2px); }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(100, 255, 218, 0.4);
-        }
-
-        .back-to-top:active {
-            transform: translateY(-2px);
-        }
-
-        /* Loading Animation */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
+        .fade-up { opacity: 0; transform: translateY(30px); }
         .fade-up.appear {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
-                        transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+            opacity: 1; transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.645,0.045,0.355,1),
+                        transform 0.6s cubic-bezier(0.645,0.045,0.355,1);
         }
 
-        /* Tablet Styles */
+        /* Tablet */
         @media (max-width: 1080px) {
-            .case-layout {
-                padding: 50px 40px;
-                gap: 35px;
-            }
-
-            .case-sidebar {
-                top: calc(var(--nav-height) + 10px);
-            }
+            .case-layout { padding: 50px 40px; gap: 35px; }
         }
 
-        /* Mobile Styles - COMPLETELY FIXED VERSION */
+        /* Mobile */
         @media (max-width: 768px) {
-            .case-study-wrapper {
-                padding-top: 0;
-            }
-
+            .case-study-wrapper { padding-top: 0; }
             .case-layout {
                 grid-template-columns: 1fr;
                 padding: 0;
                 gap: 0;
-                /* Add padding-top to account for BOTH fixed headers */
-                padding-top: 122px; /* Main nav (70px) + Mobile tabs (52px) */
+                padding-top: 122px;
             }
-
-            /* Hide desktop sidebar on mobile */
-            .case-sidebar {
-                display: none;
-            }
-
-            /* Show mobile tabs */
-            .mobile-case-nav {
-                display: block;
-            }
-
-            .case-content {
-                padding: 30px 20px; /* Normal padding, layout handles the top offset */
-                max-width: 100%;
-            }
-
-            .case-card h2 {
-                font-size: 24px;
-                margin-bottom: 16px;
-            }
-
-            .case-tags {
-                gap: 8px;
-                margin-bottom: 30px;
-            }
-
-            .case-tags span {
-                padding: 6px 12px;
-                font-size: 11px;
-            }
-
-            .case-section {
-                margin-bottom: 28px;
-                padding-bottom: 20px;
-            }
-
-            .case-section strong {
-                font-size: 18px;
-                margin-bottom: 12px;
-            }
-
-            .case-section p {
-                font-size: 15px;
-                line-height: 1.7;
-            }
-
-            .case-section li {
-                padding-left: 25px;
-                margin-bottom: 12px;
-                font-size: 15px;
-            }
-
-            .case-nav-buttons {
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 40px;
-            }
-
-            .nav-btn {
-                width: 100%;
-                padding: 16px 20px;
-                font-size: 14px;
-            }
-
-            .nav-btn:hover {
-                transform: none;
-                box-shadow: none;
-            }
-
-            .nav-btn:active {
-                background-color: rgba(100, 255, 218, 0.1);
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-
-            footer {
-                padding: 30px 20px;
-            }
+            .case-sidebar { display: none; }
+            .mobile-case-nav { display: block; }
+            .case-content { padding: 30px 20px; max-width: 100%; }
+            .case-card h2 { font-size: 24px; margin-bottom: 16px; }
+            .case-tags { gap: 8px; margin-bottom: 30px; }
+            .case-tags span { padding: 6px 12px; font-size: 11px; }
+            .case-section { margin-bottom: 28px; padding-bottom: 20px; }
+            .case-section strong { font-size: 18px; margin-bottom: 12px; }
+            .case-section p { font-size: 15px; line-height: 1.7; }
+            .case-section li { padding-left: 25px; margin-bottom: 12px; font-size: 15px; }
+            .case-nav-buttons { flex-direction: column; gap: 10px; margin-top: 40px; }
+            .nav-btn { width: 100%; padding: 16px 20px; font-size: 14px; }
+            .nav-btn:hover { transform: none; box-shadow: none; }
+            .nav-btn:active { background-color: rgba(100,255,218,0.1); }
+            .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 20px; }
+            footer { padding: 30px 20px; }
         }
 
-        /* Small Mobile Styles */
         @media (max-width: 480px) {
-            .case-layout {
-                padding-top: 122px; /* Same offset for smaller screens */
-            }
-
-            .case-content {
-                padding: 25px 16px;
-            }
-
-            .case-card h2 {
-                font-size: 22px;
-            }
-
-            .case-section strong {
-                font-size: 17px;
-            }
-
-            .case-section p,
-            .case-section li {
-                font-size: 14px;
-            }
-
-            .mobile-case-tab {
-                padding: 14px 16px;
-                font-size: 12px;
-            }
-
-            .case-tags span {
-                padding: 5px 10px;
-                font-size: 10px;
-            }
-
-            .back-to-top {
-                width: 40px;
-                height: 40px;
-                bottom: 16px;
-                right: 16px;
-                font-size: 18px;
-            }
+            .case-layout { padding-top: 122px; }
+            .case-content { padding: 25px 16px; }
+            .case-card h2 { font-size: 22px; }
+            .case-section strong { font-size: 17px; }
+            .case-section p, .case-section li { font-size: 14px; }
+            .mobile-case-tab { padding: 14px 16px; font-size: 12px; }
+            .case-tags span { padding: 5px 10px; font-size: 10px; }
+            .back-to-top { width: 40px; height: 40px; bottom: 16px; right: 16px; font-size: 18px; }
         }
 
-        /* Touch device optimization */
         @media (hover: none) and (pointer: coarse) {
-            .case-link:hover,
-            .nav-btn:hover {
-                transform: none;
-            }
-
-            .case-link:active {
-                background-color: var(--lightest-navy);
-                color: var(--green);
-            }
-
-            .mobile-case-tab:active {
-                background: rgba(100, 255, 218, 0.15);
-            }
+            .case-link:hover, .nav-btn:hover { transform: none; }
+            .case-link:active { background-color: var(--lightest-navy); color: var(--green); }
+            .mobile-case-tab:active { background: rgba(100,255,218,0.15); }
         }
     </style>
 </head>
@@ -546,47 +364,35 @@
                 <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
                         <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
-                                 fill="none"
-                                 stroke="currentColor"
-                                 stroke-width="2.5"
-                                 stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 style="transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);"/>
-                        <text x="50"
-                              y="62"
-                              text-anchor="middle"
-                              fill="currentColor"
-                              font-size="32"
-                              font-family="Arial, sans-serif"
-                              font-weight="normal"
-                              letter-spacing="2">SS</text>
+                                 fill="none" stroke="currentColor" stroke-width="2.5"
+                                 stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="50" y="62" text-anchor="middle" fill="currentColor"
+                              font-size="32" font-family="Arial, sans-serif"
+                              font-weight="normal" letter-spacing="2">SS</text>
                     </svg>
                 </a>
             </div>
             <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
             <div class="nav-links" id="nav-links">
-                <a href="index.html#about"><span class="nav-number">01.</span> About</a>
-                <a href="index.html#experience"><span class="nav-number">02.</span> Skills</a>
-                <a href="index.html#work"><span class="nav-number">03.</span> Project</a>
-                <a href="index.html#contact"><span class="nav-number">04.</span> Contact</a>
+                <a href="index.html"><span class="nav-number">01.</span> Home</a>
+                <a href="certificates.html"><span class="nav-number">02.</span> Achivements</a>
                 <a href="resume.html" class="resume-btn">Resume</a>
             </div>
         </nav>
     </header>
 
-    <!-- MOBILE NAVIGATION TABS -->
+    <!-- MOBILE NAVIGATION TABS — order matches archive.html -->
     <div class="mobile-case-nav" id="mobileNav">
         <div class="mobile-nav-container">
-            <button class="mobile-case-tab active" data-target="spotify">Spotify</button>
-            <button class="mobile-case-tab" data-target="cyber">Cyber Threat</button>
-            <button class="mobile-case-tab" data-target="vuln-scanner">Vuln Scanner</button>
-            <button class="mobile-case-tab" data-target="ipl">IPL Dashboard</button>
-            <button class="mobile-case-tab" data-target="movie">Movie Rec</button>
-            <button class="mobile-case-tab" data-target="car">Car Price</button>
+            <button class="mobile-case-tab active"  data-target="entertainment">Entertainment</button>
+            <button class="mobile-case-tab"          data-target="vuln-scanner">Vuln Scanner</button>
+            <button class="mobile-case-tab"          data-target="cyber">Cyber Threat</button>
+            <button class="mobile-case-tab"          data-target="spotify">Spotify</button>
+            <button class="mobile-case-tab"          data-target="car">Car Price</button>
+            <button class="mobile-case-tab"          data-target="movie">Movie Rec</button>
+            <button class="mobile-case-tab"          data-target="ipl">IPL Dashboard</button>
         </div>
     </div>
 
@@ -594,65 +400,98 @@
     <div class="case-study-wrapper">
         <div class="case-layout">
 
-            <!-- SIDEBAR NAVIGATION - Desktop Only -->
+            <!-- SIDEBAR — order matches archive.html -->
             <aside class="case-sidebar fade-up">
                 <h3>Case Studies</h3>
                 <div class="case-nav-list">
-                    <div class="case-link active" data-target="spotify">Spotify Recommendation</div>
-                    <div class="case-link" data-target="cyber">Cyber Threat Detection</div>
-                    <div class="case-link" data-target="vuln-scanner">AI Vulnerability Scanner</div>
-                    <div class="case-link" data-target="ipl">IPL Dashboard</div>
-                    <div class="case-link" data-target="movie">Movie Recommendation</div>
-                    <div class="case-link" data-target="car">Car Price Prediction</div>
+                    <div class="case-link active" data-target="entertainment">Entertainment Dashboard</div>
+                    <div class="case-link"         data-target="vuln-scanner">AI Vulnerability Scanner</div>
+                    <div class="case-link"         data-target="cyber">Cyber Threat Detection</div>
+                    <div class="case-link"         data-target="spotify">Spotify Recommendation</div>
+                    <div class="case-link"         data-target="car">Car Price Prediction</div>
+                    <div class="case-link"         data-target="movie">Movie Recommendation</div>
+                    <div class="case-link"         data-target="ipl">IPL Dashboard</div>
                 </div>
             </aside>
 
             <!-- CONTENT AREA -->
             <main class="case-content">
 
-                <!-- SPOTIFY CASE STUDY -->
-                <div class="case-card active fade-up" id="spotify">
-                    <h2>Spotify Real-Time Recommendation System</h2>
+                <!-- ══════════════════════════════════════
+                     1. ENTERTAINMENT DASHBOARD
+                ══════════════════════════════════════ -->
+                <div class="case-card active fade-up" id="entertainment">
+                    <h2>Real-Time Entertainment Intelligence</h2>
                     <div class="case-tags">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>Spotify API</span>
-                        <span>Recommendation Engine</span>
+                        <span>HTML / CSS / JS</span>
+                        <span>TMDB API</span>
+                        <span>Chart.js</span>
+                        <span>Data Visualisation</span>
+                        <span>Responsive Design</span>
                     </div>
 
                     <div class="case-section">
                         <strong>Overview</strong>
-                        <p>This project is a real-time music recommendation system built using Python and the Spotify Web API. Its goal is to help users discover new music tailored to their listening preferences by analyzing their historical listening behavior and track audio features.</p>
+                        <p>A cinematic, single-page analytics dashboard that delivers deep intelligence on any movie or TV show in real time. Users search for a title and instantly see box office financials, revenue trend modelling, financial breakdown charts, genre radar profiles, audience score rings, cast & crew grids, season browsers, network info, and popularity metrics — all wrapped in a gold-on-dark responsive UI built entirely in vanilla HTML, CSS, and JavaScript.</p>
                     </div>
 
                     <div class="case-section">
                         <strong>Problem Statement</strong>
-                        <p>With millions of songs available on streaming platforms, users often struggle to find tracks that match their tastes. This project creates a system that recommends songs dynamically based on listening patterns and audio characteristics.</p>
+                        <p>Entertainment data exists across dozens of scattered sources — box office trackers, review aggregators, streaming databases — making it hard for a user to get a holistic picture of any title in one place. The challenge was to unify all of this into a single zero-backend dashboard that feels as polished as a native app, loads instantly, and works on any device.</p>
                     </div>
 
                     <div class="case-section">
-                        <strong>System Architecture</strong>
+                        <strong>Key Features</strong>
                         <ul>
-                            <li><strong>User Authentication:</strong> Secure login via Spotify OAuth 2.0</li>
-                            <li><strong>Data Retrieval:</strong> Collects recently played tracks and audio features</li>
-                            <li><strong>Feature Processing:</strong> Normalizes song vectors for similarity comparison</li>
-                            <li><strong>Similarity Calculation:</strong> Uses cosine similarity for matching</li>
-                            <li><strong>Recommendations:</strong> Real-time suggestions through web interface</li>
+                            <li><strong>Dual Mode:</strong> Seamless switch between Movies and TV Shows with context-aware UI — profit bars for movies, season grids and network info for TV</li>
+                            <li><strong>Live Autocomplete Search:</strong> Real-time suggestions via TMDB search API with full keyboard navigation (↑ ↓ Enter Escape) and ⌘K shortcut</li>
+                            <li><strong>Revenue Trend Modelling:</strong> Cumulative and period-based revenue charts built using a theatrical decay curve — since TMDB does not provide weekly breakdowns, the distribution is modelled mathematically</li>
+                            <li><strong>Financial Breakdown:</strong> Animated bar chart comparing budget, worldwide box office, and net profit/loss with colour-coded profit/loss states</li>
+                            <li><strong>Genre Radar Chart:</strong> Six-axis radar mapping Action, Adventure, Drama, Thriller, Comedy, and Romance scores derived from a hand-crafted genre scoring matrix</li>
+                            <li><strong>Audience Score Ring:</strong> Animated SVG stroke-dashoffset ring that fills dynamically, colour-coded green/gold/red by rating tier</li>
+                            <li><strong>Cast & Crew Grid:</strong> Director/Creator highlighted in gold, full cast with profile photos, character names, and roles</li>
+                            <li><strong>Season Browser:</strong> TV-only grid showing every season with poster, episode count, and air year</li>
+                            <li><strong>Production & Networks Panel:</strong> Company/network logos with country of origin</li>
+                            <li><strong>Responsive Design:</strong> Four breakpoints (desktop → tablet → mobile → small mobile) with a sticky search bar and back-to-home link on mobile</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Technical Architecture</strong>
+                        <ul>
+                            <li><strong>Zero Backend:</strong> Pure static frontend — no server, no build step, no framework. HTML + CSS + vanilla JS only</li>
+                            <li><strong>TMDB API v3:</strong> Two parallel fetch calls on search selection — <code>/movie/{id}</code> + <code>/movie/{id}/credits</code> (or TV equivalents) — resolved with <code>Promise.all</code> for speed</li>
+                            <li><strong>Chart.js 4.4:</strong> Six chart instances (cumulative line, period bar, financial bar, popularity bar, genre radar, episodes bar) with shared tooltip and scale defaults</li>
+                            <li><strong>chartjs-adapter-date-fns:</strong> Enables time-axis charts with <code>type: "time"</code> for the revenue trend panels</li>
+                            <li><strong>CSS Custom Properties:</strong> Full design token system (10 colour variables, layout variables) enabling consistent theming across all components</li>
+                            <li><strong>Animations:</strong> CSS <code>@keyframes fadeUp</code> with staggered <code>animation-delay</code> per card, SVG stroke transitions for the score ring, and width transitions for the profit bar</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Design Decisions</strong>
+                        <ul>
+                            <li><strong>Gold-on-dark palette:</strong> Chosen to evoke the premium feel of cinematic brands (Oscars, IMAX, Netflix dark mode) — gold (#c9a84c) as accent against a near-black (#07080d) background</li>
+                            <li><strong>Bebas Neue + DM Sans:</strong> Display font for stats/headings, humanist sans for body — a pairing that balances editorial weight with readability</li>
+                            <li><strong>Noise overlay:</strong> Subtle SVG fractalNoise texture at 0.4 opacity adds grain depth without impacting performance</li>
+                            <li><strong>Mobile poster fix:</strong> Sidebar poster uses <code>aspect-ratio: 2/3</code> + <code>object-position: top center</code> to always show the full poster without cropping faces</li>
+                            <li><strong>Modelled revenue:</strong> Rather than hiding the chart for unavailable data, a theatrically-plausible decay curve is rendered with a clear "Modelled distribution" label — keeping the dashboard always visually complete</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Challenges & Solutions</strong>
+                        <ul>
+                            <li><strong>No weekly box office data:</strong> TMDB only provides a lifetime revenue total. Solved by modelling distribution using an exponential decay function with a 120-day theatrical window and a 12% home-video tail</li>
+                            <li><strong>Chart instance memory leaks:</strong> Each new search destroys all six previous chart instances via a <code>destroyChart()</code> wrapper before re-creating them</li>
+                            <li><strong>Mobile image cropping:</strong> Fixed by replacing fixed-height poster containers with <code>aspect-ratio: 2/3</code> + <code>max-height</code> caps per breakpoint, ensuring faces are always visible</li>
+                            <li><strong>Three simultaneous search inputs:</strong> Desktop header, mobile sticky bar, and landing page all sync on selection — clicking any suggestion updates all three inputs simultaneously</li>
                         </ul>
                     </div>
 
                     <div class="case-section">
                         <strong>Tech Stack</strong>
-                        <p>Python, Flask, Pandas, NumPy, Spotify Web API</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Key Insights</strong>
-                        <ul>
-                            <li>Real-time analysis enables highly personalized recommendations</li>
-                            <li>Audio feature-based similarity outperforms playlist matching</li>
-                            <li>API optimization significantly improves responsiveness</li>
-                        </ul>
+                        <p>HTML5, CSS3 (Custom Properties, Grid, Flexbox, Animations), Vanilla JavaScript (ES2020+), TMDB API v3, Chart.js 4.4, chartjs-adapter-date-fns, Bebas Neue + DM Sans (Google Fonts)</p>
                     </div>
 
                     <div class="case-nav-buttons">
@@ -662,7 +501,84 @@
                     </div>
                 </div>
 
-                <!-- CYBER THREAT CASE STUDY -->
+                <!-- ══════════════════════════════════════
+                     2. AI WEB VULNERABILITY SCANNER
+                ══════════════════════════════════════ -->
+                <div class="case-card fade-up" id="vuln-scanner">
+                    <h2>AI Web Vulnerability Scanner</h2>
+                    <div class="case-tags">
+                        <span>Python</span>
+                        <span>Streamlit</span>
+                        <span>Groq Cloud AI</span>
+                        <span>Random Forest ML</span>
+                        <span>BeautifulSoup</span>
+                        <span>Scikit-learn</span>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Overview</strong>
+                        <p>A full-stack, AI-powered web vulnerability scanner built with Streamlit and powered by a dual-intelligence engine: Groq Cloud AI (LLaMA 3.3 70B) for contextual threat analysis and a trained Random Forest ML model for pattern-based detection. Users authenticate via a login system, enter any URL or domain, and the scanner automatically discovers subdomains, crawls pages, and surfaces vulnerabilities across SQL Injection, XSS, CSRF, insecure headers, and security misconfigurations — all exported as JSON, Markdown, or CSV reports.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Problem Statement</strong>
+                        <p>Manual penetration testing is slow, expensive, and hard to scale. Rule-based scanners miss context-dependent vulnerabilities and generate noisy false positives. This project combines a trained ML model with a real Groq LLM to create a scanner that understands page context, validates findings intelligently, and produces executive-grade reports — all runnable with a single <code>streamlit run app_ai.py</code> command.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Three-Layer Detection Pipeline</strong>
+                        <ul>
+                            <li><strong>Layer 1 — Random Forest ML Model:</strong> A trained scikit-learn Random Forest classifier predicts SQL Injection, XSS, or Misconfiguration with per-class probability scores. Only predictions above 60% confidence are surfaced as findings</li>
+                            <li><strong>Layer 2 — Traditional Pattern Detection:</strong> Regex and DOM heuristics scan page HTML for known dangerous patterns — <code>eval()</code>, <code>innerHTML=</code>, <code>document.write()</code>, GET-method forms, POST forms without CSRF tokens, and sensitive keywords in HTML comments</li>
+                            <li><strong>Layer 3 — Groq AI Analysis (LLaMA 3.3 70B):</strong> The <code>GroqOrchestrator</code> sends HTML snippets, form structures, and script counts to Groq's API for deep contextual analysis, returning structured JSON vulnerability objects with CWE IDs, proof of concept, and remediation guidance</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Groq AI Orchestrator</strong>
+                        <ul>
+                            <li><strong>Domain Recognition:</strong> Uses LLaMA to intelligently parse any user input — full URLs, bare domains, subdomains, paths — and extract a clean domain with confidence score</li>
+                            <li><strong>Page Content Analysis:</strong> Sends truncated HTML + form/script metadata to Groq, receiving a JSON array of vulnerabilities with risk scores calculated by severity × exploitability × business impact × confidence</li>
+                            <li><strong>Vulnerability Validation:</strong> Each detected finding is sent back to Groq for a second-pass review, refining severity and filtering false positives</li>
+                            <li><strong>Executive Summary:</strong> Generates a 200–250 word business-readable summary with security posture rating, key findings, and immediate action items</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Subdomain Discovery &amp; Smart Crawler</strong>
+                        <ul>
+                            <li>crt.sh Certificate Transparency Logs + HackerTarget API + 20-word common subdomain wordlist</li>
+                            <li>30-thread <code>ThreadPoolExecutor</code> for parallel DNS resolution and HTTP reachability verification</li>
+                            <li>Smart Crawl mode prioritises security-relevant pages: <code>login</code>, <code>admin</code>, <code>upload</code>, <code>search</code>, <code>payment</code>, <code>api</code>, <code>profile</code></li>
+                            <li>Configurable scan depth (Quick / Standard / Deep / Comprehensive) with 5–30 pages per domain slider</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Vulnerability Coverage</strong>
+                        <ul>
+                            <li>SQL Injection (CWE-89), XSS (CWE-79), Missing CSRF Protection (CWE-352)</li>
+                            <li>Sensitive Data Exposure (CWE-200) via HTML comment scanning</li>
+                            <li>Insecure Protocol (CWE-319) and five missing security headers (CWE-16)</li>
+                            <li>ML-detected Misconfiguration based on CSP absence and script/form count thresholds</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Tech Stack</strong>
+                        <p>Python, Streamlit, Groq Cloud API (LLaMA 3.3 70B), Scikit-learn (Random Forest), Joblib, Pandas, NumPy, BeautifulSoup4, Requests, python-dotenv, lxml, concurrent.futures, socket</p>
+                    </div>
+
+                    <div class="case-nav-buttons">
+                        <button class="nav-btn prevBtn">← Previous</button>
+                        <a href="/" class="nav-btn">🏠 Home</a>
+                        <button class="nav-btn nextBtn">Next →</button>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════
+                     3. CYBER THREAT DETECTION
+                ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="cyber">
                     <h2>Cyber Threat Detection Suite</h2>
                     <div class="case-tags">
@@ -683,7 +599,7 @@
                     </div>
 
                     <div class="case-section">
-                        <strong>Modeling Approach</strong>
+                        <strong>Modelling Approach</strong>
                         <p>Random Forest, SVM, and ensemble learners classify traffic as benign or malicious. Models are evaluated using accuracy, precision, recall, and F1-score metrics.</p>
                     </div>
 
@@ -693,13 +609,13 @@
                             <li>Network traffic preprocessing and feature preparation</li>
                             <li>Real-time inference through Flask API</li>
                             <li>Confidence scores for predictions</li>
-                            <li>Attack category visualization</li>
+                            <li>Attack category visualisation</li>
                         </ul>
                     </div>
 
                     <div class="case-section">
                         <strong>Impact</strong>
-                        <p>Enhances traditional security tools by detecting complex attack patterns, supporting faster incident response and reducing false positives.</p>
+                        <p>Enhances traditional security tools by detecting complex attack patterns, supporting faster incident response and reducing false positives. Achieved 94% detection accuracy during the RedKross internship deployment.</p>
                     </div>
 
                     <div class="case-nav-buttons">
@@ -709,89 +625,51 @@
                     </div>
                 </div>
 
-                <!-- AI WEB VULNERABILITY SCANNER CASE STUDY -->
-                <div class="case-card fade-up" id="vuln-scanner">
-                    <h2>AI Web Vulnerability Scanner</h2>
+                <!-- ══════════════════════════════════════
+                     4. SPOTIFY RECOMMENDATION
+                ══════════════════════════════════════ -->
+                <div class="case-card fade-up" id="spotify">
+                    <h2>Spotify Real-Time Recommendation System</h2>
                     <div class="case-tags">
                         <span>Python</span>
-                        <span>AI/ML</span>
-                        <span>Security Testing</span>
-                        <span>OWASP Top 10</span>
-                        <span>Penetration Testing</span>
+                        <span>Flask</span>
+                        <span>Spotify API</span>
+                        <span>Recommendation Engine</span>
                     </div>
 
                     <div class="case-section">
                         <strong>Overview</strong>
-                        <p>An AI-powered advanced web vulnerability scanner that automates comprehensive security testing for web applications. The system intelligently detects and reports vulnerabilities from the OWASP Top 10, including SQL injection, Cross-Site Scripting (XSS), CSRF, insecure configurations, and other critical security flaws using machine learning-based pattern recognition.</p>
+                        <p>A real-time music recommendation system built using Python and the Spotify Web API. Its goal is to help users discover new music tailored to their listening preferences by analyzing their historical listening behavior and track audio features.</p>
                     </div>
 
                     <div class="case-section">
                         <strong>Problem Statement</strong>
-                        <p>Manual security testing is time-consuming, error-prone, and difficult to scale across large web applications. Traditional vulnerability scanners often produce high false-positive rates and miss sophisticated attack vectors. This project addresses these challenges by leveraging AI to intelligently identify vulnerabilities with higher accuracy and automated comprehensive reporting.</p>
+                        <p>With millions of songs available on streaming platforms, users often struggle to find tracks that match their tastes. This project creates a system that recommends songs dynamically based on listening patterns and audio characteristics.</p>
                     </div>
 
                     <div class="case-section">
-                        <strong>AI-Powered Detection Engine</strong>
+                        <strong>System Architecture</strong>
                         <ul>
-                            <li><strong>Machine Learning Models:</strong> Trained classification models to identify attack patterns and vulnerability signatures</li>
-                            <li><strong>Pattern Recognition:</strong> Deep learning algorithms for detecting obfuscated and sophisticated attack vectors</li>
-                            <li><strong>Intelligent Crawling:</strong> Smart web crawler that maps application structure and identifies potential injection points</li>
-                            <li><strong>Adaptive Testing:</strong> ML-driven test case generation based on application behavior analysis</li>
-                            <li><strong>False Positive Reduction:</strong> AI verification layer to minimize false alarms and validate findings</li>
+                            <li><strong>User Authentication:</strong> Secure login via Spotify OAuth 2.0</li>
+                            <li><strong>Data Retrieval:</strong> Collects recently played tracks and audio features</li>
+                            <li><strong>Feature Processing:</strong> Normalizes song vectors for similarity comparison</li>
+                            <li><strong>Similarity Calculation:</strong> Uses cosine similarity for matching</li>
+                            <li><strong>Recommendations:</strong> Real-time suggestions through web interface</li>
                         </ul>
                     </div>
 
                     <div class="case-section">
-                        <strong>Vulnerability Detection Coverage</strong>
+                        <strong>Key Insights</strong>
                         <ul>
-                            <li><strong>SQL Injection:</strong> Detects various SQLi techniques including blind, time-based, and error-based injections</li>
-                            <li><strong>Cross-Site Scripting (XSS):</strong> Identifies reflected, stored, and DOM-based XSS vulnerabilities</li>
-                            <li><strong>CSRF:</strong> Analyzes token implementation and session management weaknesses</li>
-                            <li><strong>Security Misconfigurations:</strong> Scans for exposed admin panels, default credentials, and insecure headers</li>
-                            <li><strong>Broken Authentication:</strong> Tests password policies, session fixation, and authentication bypass</li>
-                            <li><strong>Sensitive Data Exposure:</strong> Identifies unencrypted data transmission and storage issues</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Technical Architecture</strong>
-                        <ul>
-                            <li><strong>Web Crawler Module:</strong> Automated discovery of URLs, forms, and parameters</li>
-                            <li><strong>Payload Generator:</strong> AI-generated attack payloads tailored to application context</li>
-                            <li><strong>Response Analyzer:</strong> ML-based response classification to identify successful exploits</li>
-                            <li><strong>Reporting Engine:</strong> Comprehensive vulnerability reports with severity ratings and remediation guidance</li>
-                            <li><strong>Real-time Dashboard:</strong> Live progress tracking and vulnerability visualization</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Key Features</strong>
-                        <ul>
-                            <li>Automated discovery and testing of web application endpoints</li>
-                            <li>OWASP Top 10 comprehensive vulnerability coverage</li>
-                            <li>Machine learning-based attack pattern recognition</li>
-                            <li>Detailed security reports with CVSS scoring</li>
-                            <li>Remediation recommendations for each finding</li>
-                            <li>Integration-ready API for CI/CD pipelines</li>
-                            <li>Configurable scan profiles (quick, standard, deep)</li>
-                            <li>Export capabilities (PDF, JSON, XML)</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Impact & Results</strong>
-                        <ul>
-                            <li>Reduced manual testing time by 70% compared to traditional methods</li>
-                            <li>Achieved 85% detection accuracy with 15% false positive rate</li>
-                            <li>Successfully identified critical vulnerabilities missed by commercial scanners</li>
-                            <li>Enabled continuous security testing in DevSecOps workflows</li>
-                            <li>Improved security posture through proactive vulnerability identification</li>
+                            <li>Real-time analysis enables highly personalized recommendations</li>
+                            <li>Audio feature-based similarity outperforms playlist matching</li>
+                            <li>API optimization significantly improves responsiveness</li>
                         </ul>
                     </div>
 
                     <div class="case-section">
                         <strong>Tech Stack</strong>
-                        <p>Python, Scikit-learn, TensorFlow, BeautifulSoup, Selenium, Requests, OWASP ZAP API, Flask, SQLite</p>
+                        <p>Python, Flask, Pandas, NumPy, Spotify Web API</p>
                     </div>
 
                     <div class="case-nav-buttons">
@@ -801,7 +679,107 @@
                     </div>
                 </div>
 
-                <!-- IPL CASE STUDY -->
+                <!-- ══════════════════════════════════════
+                     5. CAR PRICE PREDICTION
+                ══════════════════════════════════════ -->
+                <div class="case-card fade-up" id="car">
+                    <h2>Car Price Prediction</h2>
+                    <div class="case-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Machine Learning</span>
+                        <span>Regression</span>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Overview</strong>
+                        <p>ML-powered car price prediction system estimating vehicle values based on mileage, manufacture year, brand, and other features through regression models.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Problem Statement</strong>
+                        <p>Predicting fair market value for used cars is challenging. Buyers and sellers rely on rough estimates. This model learns from historical data to provide accurate predictions.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Data &amp; Features</strong>
+                        <p>Data cleaning handled missing values and categorical encoding. Feature engineering created variables like vehicle age, enhancing the model's pattern recognition.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Modelling</strong>
+                        <p>Regression models trained on historical car data. Evaluation using MAE and R² score ensures generalisation to unseen data.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Key Features</strong>
+                        <ul>
+                            <li>Data preprocessing and transformation pipeline</li>
+                            <li>Real-time prediction via Flask API</li>
+                            <li>Cloud deployment ready</li>
+                            <li>Serialised model for quick inference</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-nav-buttons">
+                        <button class="nav-btn prevBtn">← Previous</button>
+                        <a href="/" class="nav-btn">🏠 Home</a>
+                        <button class="nav-btn nextBtn">Next →</button>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════
+                     6. MOVIE RECOMMENDATION
+                ══════════════════════════════════════ -->
+                <div class="case-card fade-up" id="movie">
+                    <h2>Movie Recommender System</h2>
+                    <div class="case-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Recommendation</span>
+                        <span>Machine Learning</span>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Overview</strong>
+                        <p>A Python-based recommendation system providing personalized movie suggestions using content similarity algorithms and collaborative filtering.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Problem Statement</strong>
+                        <p>Users struggle to find relevant movies among thousands of titles. Static charts don't cater to individual tastes. This system analyses metadata and similarity patterns for personalisation.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>How It Works</strong>
+                        <p>Precomputed similarity matrices enable fast recommendations. Cosine similarity between movie feature vectors (genres, ratings) drives the logic.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Features</strong>
+                        <ul>
+                            <li>Interactive web interface</li>
+                            <li>Fast real-time recommendations</li>
+                            <li>Personalised suggestions</li>
+                            <li>Lightweight Flask deployment</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Impact</strong>
+                        <p>Enhances content discovery and user engagement by applying ML techniques for personalized recommendations in large catalogs.</p>
+                    </div>
+
+                    <div class="case-nav-buttons">
+                        <button class="nav-btn prevBtn">← Previous</button>
+                        <a href="/" class="nav-btn">🏠 Home</a>
+                        <button class="nav-btn nextBtn">Next →</button>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════
+                     7. IPL DASHBOARD
+                ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="ipl">
                     <h2>IPL Data Analysis Dashboard</h2>
                     <div class="case-tags">
@@ -813,7 +791,7 @@
 
                     <div class="case-section">
                         <strong>Overview</strong>
-                        <p>In-depth exploratory analysis of IPL cricket (2008-2019), uncovering patterns in team performance, player contributions, and match outcomes using historical data.</p>
+                        <p>In-depth exploratory analysis of IPL cricket (2008–2019), uncovering patterns in team performance, player contributions, and match outcomes using historical data.</p>
                     </div>
 
                     <div class="case-section">
@@ -844,133 +822,33 @@
                     <div class="case-nav-buttons">
                         <button class="nav-btn prevBtn">← Previous</button>
                         <a href="/" class="nav-btn">🏠 Home</a>
-                        <button class="nav-btn nextBtn">Next →</button>
-                    </div>
-                </div>
-
-                <!-- MOVIE CASE STUDY -->
-                <div class="case-card fade-up" id="movie">
-                    <h2>Movie Recommender System</h2>
-                    <div class="case-tags">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>Recommendation</span>
-                        <span>Machine Learning</span>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Overview</strong>
-                        <p>A Python-based recommendation system providing personalized movie suggestions using content similarity algorithms and collaborative filtering.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Problem Statement</strong>
-                        <p>Users struggle to find relevant movies among thousands of titles. Static charts don't cater to individual tastes. This system analyzes metadata and similarity patterns for personalization.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>How It Works</strong>
-                        <p>Precomputed similarity matrices enable fast recommendations. Cosine similarity between movie feature vectors (genres, ratings) drives the logic.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Features</strong>
-                        <ul>
-                            <li>Interactive web interface</li>
-                            <li>Fast real-time recommendations</li>
-                            <li>Personalized suggestions</li>
-                            <li>Lightweight Flask deployment</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Impact</strong>
-                        <p>Enhances content discovery and user engagement by applying ML techniques for personalized recommendations in large catalogs.</p>
-                    </div>
-
-                    <div class="case-nav-buttons">
-                        <button class="nav-btn prevBtn">← Previous</button>
-                        <a href="/" class="nav-btn">🏠 Home</a>
-                        <button class="nav-btn nextBtn">Next →</button>
-                    </div>
-                </div>
-
-                <!-- CAR PRICE CASE STUDY -->
-                <div class="case-card fade-up" id="car">
-                    <h2>Car Price Prediction</h2>
-                    <div class="case-tags">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>Machine Learning</span>
-                        <span>Regression</span>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Overview</strong>
-                        <p>ML-powered car price prediction system estimating vehicle values based on mileage, manufacture year, brand, and other features through regression models.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Problem Statement</strong>
-                        <p>Predicting fair market value for used cars is challenging. Buyers and sellers rely on rough estimates. This model learns from historical data to provide accurate predictions.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Data & Features</strong>
-                        <p>Data cleaning handled missing values and categorical encoding. Feature engineering created variables like vehicle age, enhancing the model's pattern recognition.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Modeling</strong>
-                        <p>Regression models trained on historical car data. Evaluation using MAE and R² score ensures generalization to unseen data.</p>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Key Features</strong>
-                        <ul>
-                            <li>Data preprocessing and transformation</li>
-                            <li>Real-time prediction via Flask</li>
-                            <li>Cloud deployment ready</li>
-                            <li>Serialized model for quick inference</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-nav-buttons">
-                        <button class="nav-btn prevBtn">← Previous</button>
-                        <a href="/" class="nav-btn">🏠 Home</a>
                         <button class="nav-btn nextBtn" disabled>Next →</button>
                     </div>
                 </div>
 
             </main>
-
         </div>
     </div>
 
-    <!-- BACK TO TOP BUTTON -->
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        ↑
-    </button>
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script>
-        // Case Study Navigation
+        // Project order matches archive.html exactly
+        const projectIds = ['entertainment', 'vuln-scanner', 'cyber', 'spotify', 'car', 'movie', 'ipl'];
+
         const desktopLinks = document.querySelectorAll(".case-link");
-        const mobileTabs = document.querySelectorAll(".mobile-case-tab");
-        const cards = document.querySelectorAll(".case-card");
-        const prevBtns = document.querySelectorAll(".prevBtn");
-        const nextBtns = document.querySelectorAll(".nextBtn");
+        const mobileTabs   = document.querySelectorAll(".mobile-case-tab");
+        const cards        = document.querySelectorAll(".case-card");
 
-        const projectIds = ['spotify', 'cyber', 'vuln-scanner', 'ipl', 'movie', 'car'];
-
-        // Activate a project by ID
         function activate(id) {
             desktopLinks.forEach(l => l.classList.remove("active"));
             mobileTabs.forEach(t => t.classList.remove("active"));
             cards.forEach(c => c.classList.remove("active"));
 
             const desktopLink = document.querySelector(`.case-link[data-target="${id}"]`);
-            const mobileTab = document.querySelector(`.mobile-case-tab[data-target="${id}"]`);
-            const card = document.getElementById(id);
+            const mobileTab   = document.querySelector(`.mobile-case-tab[data-target="${id}"]`);
+            const card        = document.getElementById(id);
 
             if (desktopLink) desktopLink.classList.add("active");
             if (mobileTab) {
@@ -979,7 +857,6 @@
             }
             if (card) {
                 card.classList.add("active");
-                // Always scroll to top when switching case studies
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
@@ -1015,7 +892,7 @@
             });
         });
 
-        prevBtns.forEach(btn => {
+        document.querySelectorAll('.prevBtn').forEach(btn => {
             btn.addEventListener("click", () => {
                 const index = getCurrentIndex();
                 if (index > 0) {
@@ -1025,7 +902,7 @@
             });
         });
 
-        nextBtns.forEach(btn => {
+        document.querySelectorAll('.nextBtn').forEach(btn => {
             btn.addEventListener("click", () => {
                 const index = getCurrentIndex();
                 if (index < projectIds.length - 1) {
@@ -1038,87 +915,60 @@
         window.addEventListener('DOMContentLoaded', () => {
             if (window.location.hash) {
                 const targetId = window.location.hash.substring(1);
-                if (projectIds.includes(targetId)) {
-                    activate(targetId);
-                } else {
-                    activate(projectIds[0]);
-                }
+                activate(projectIds.includes(targetId) ? targetId : projectIds[0]);
             } else {
                 activate(projectIds[0]);
             }
 
-            const fadeElements = document.querySelectorAll('.fade-up');
-            fadeElements.forEach((element, index) => {
-                setTimeout(() => {
-                    element.classList.add('appear');
-                }, index * 100);
+            document.querySelectorAll('.fade-up').forEach((el, i) => {
+                setTimeout(() => el.classList.add('appear'), i * 100);
             });
         });
 
         const backToTopBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
+            backToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
         });
-
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Swipe gestures for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        document.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
+        // Swipe gestures
+        let touchStartX = 0, touchEndX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        document.addEventListener('touchend',   e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }, { passive: true });
 
         function handleSwipe() {
-            const swipeThreshold = 50;
-            const currentIndex = getCurrentIndex();
-
-            if (touchEndX < touchStartX - swipeThreshold && currentIndex < projectIds.length - 1) {
-                activate(projectIds[currentIndex + 1]);
-                history.replaceState(null, "", "#" + projectIds[currentIndex + 1]);
+            const threshold = 50;
+            const index = getCurrentIndex();
+            if (touchEndX < touchStartX - threshold && index < projectIds.length - 1) {
+                activate(projectIds[index + 1]);
+                history.replaceState(null, "", "#" + projectIds[index + 1]);
             }
-
-            if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
-                activate(projectIds[currentIndex - 1]);
-                history.replaceState(null, "", "#" + projectIds[currentIndex - 1]);
+            if (touchEndX > touchStartX + threshold && index > 0) {
+                activate(projectIds[index - 1]);
+                history.replaceState(null, "", "#" + projectIds[index - 1]);
             }
         }
     </script>
-    <!-- ENHANCED FOOTER -->
-<footer class="fade-up">
-    <!-- Mobile Social Icons -->
-    <div class="footer-social-mobile">
-        <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        </a>
-    </div>
 
-    <!-- Footer Text with GitHub Link -->
-    <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
-        <p>Designed & Built by Sanjay Sharma</p>
-    </a>
-</footer>
+    <!-- FOOTER -->
+    <footer class="fade-up">
+        <div class="footer-social-mobile">
+            <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+        </div>
+        <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <p>Designed &amp; Built by Sanjay Sharma</p>
+        </a>
+    </footer>
 
 </body>
 </html>
-
-
-
