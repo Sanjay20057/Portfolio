@@ -1587,3 +1587,33 @@ footer .footer-link:hover p {
         grid-template-columns: 1fr;
     }
 }
+/* =====================
+   ARCHIVE LINK
+   Add this to the end of style.css
+===================== */
+
+/* "view the archive →" link under Other Noteworthy Projects heading */
+.archive-link {
+    display: block;
+    width: fit-content;
+    margin: -30px auto 50px;
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    color: var(--green);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.archive-link::after {
+    content: ' →';
+    display: inline;
+    transition: letter-spacing 0.25s var(--easing);
+}
+
+.archive-link:hover {
+    letter-spacing: 1px;
+}
+
+.archive-link:hover::after {
+    letter-spacing: 3px;
+}
