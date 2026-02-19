@@ -5,236 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sanjay Sharma</title>
     <link rel="icon" type="image/png" href="static/Logo/Logo.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/style.css" />
     <script defer src="static/script.js"></script>
-    <style>
-        /* ═══════════════════════════════════════════
-           RESPONSIVE OVERRIDES & IMPROVEMENTS
-        ═══════════════════════════════════════════ */
-
-        /* ── HERO tweaks ── */
-        .hero .container {
-            padding-top: 120px;
-            padding-bottom: 60px;
-        }
-
-        /* ── Prevent horizontal overflow globally ── */
-        html, body { overflow-x: hidden; }
-
-        /* ── Navbar: tighter on small screens ── */
-        @media (max-width: 768px) {
-            .navbar { padding: 0 20px; }
-            .hero .container { padding-top: 100px; }
-        }
-
-        /* ── Featured Projects: better mobile stack ── */
-        @media (max-width: 768px) {
-            .featured-project,
-            .featured-project.reverse {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                padding: 24px 20px;
-                margin-bottom: 40px;
-                background-color: var(--light-navy);
-                border-radius: 8px;
-                box-shadow: 0 10px 30px -15px var(--navy-shadow);
-            }
-
-            .project-image,
-            .featured-project.reverse .project-image {
-                order: -1;
-                width: 100%;
-                height: 200px;
-                opacity: 1;
-                border-radius: 6px;
-                overflow: hidden;
-            }
-
-            .project-image a,
-            .featured-project.reverse .project-image a {
-                height: 200px;
-                display: block;
-            }
-
-            .project-image img,
-            .featured-project.reverse .project-image img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                filter: grayscale(0%) contrast(1) brightness(100%);
-                border-radius: 6px;
-            }
-
-            .project-image a::before,
-            .featured-project.reverse .project-image a::before {
-                display: none;
-            }
-
-            .project-content,
-            .featured-project.reverse .project-content {
-                width: 100%;
-                text-align: left;
-            }
-
-            .project-description {
-                padding: 16px;
-                background-color: rgba(17, 34, 64, 0.7);
-                box-shadow: none;
-            }
-
-            .project-tech-list,
-            .featured-project.reverse .project-tech-list {
-                justify-content: flex-start;
-                gap: 6px;
-                flex-wrap: wrap;
-            }
-
-            .project-tech-list li,
-            .featured-project.reverse .project-tech-list li {
-                margin: 0 8px 4px 0;
-                font-size: 11px;
-                background-color: var(--green-tint);
-                color: var(--green);
-                padding: 3px 10px;
-                border-radius: 20px;
-            }
-
-            .project-links,
-            .featured-project.reverse .project-links {
-                justify-content: flex-start;
-                margin-left: -8px;
-                margin-right: 0;
-            }
-
-            .other-projects { margin-top: 60px; }
-        }
-
-        /* ── About image: nicely sized across breakpoints ── */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .about-inner { grid-template-columns: 3fr 2fr; gap: 30px; }
-            .about-image { max-width: 240px; }
-        }
-
-        @media (max-width: 768px) {
-            .about-image {
-                width: 60%;
-                max-width: 220px;
-                margin: 40px auto 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .about-image { width: 70%; max-width: 200px; }
-        }
-
-        /* ── Skills grid: single column on very small screens ── */
-        @media (max-width: 480px) {
-            .skill-category-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .skill-category { padding: 16px; }
-        }
-
-        /* ── Contact section ── */
-        @media (max-width: 480px) {
-            .contact-heading { font-size: 28px; }
-            .contact-description { font-size: var(--fz-md); }
-        }
-
-        /* ── Section headings on small screens ── */
-        @media (max-width: 640px) {
-            .section-heading { font-size: 20px; }
-            .section-heading::after { display: none; }
-        }
-
-        /* ── Tab nav horizontal scroll indicator ── */
-        @media (max-width: 768px) {
-            .tab-nav {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-            .tab-nav::-webkit-scrollbar { display: none; }
-        }
-
-        /* ── Project cards: single col on tiny screens ── */
-        @media (max-width: 400px) {
-            .projects-grid { grid-template-columns: 1fr; gap: 16px; }
-            .project-card { padding: 20px 16px; }
-        }
-
-        /* ── Hero description max-width fluid ── */
-        @media (max-width: 768px) {
-            .hero-description { max-width: 100%; font-size: var(--fz-md); }
-            .big-heading { font-size: clamp(28px, 7vw, 50px); }
-        }
-
-        /* ── CTA button full-width on mobile ── */
-        @media (max-width: 480px) {
-            .cta-button { padding: 0.8rem 1.2rem; font-size: 12px; }
-        }
-
-        /* ── Container padding tweaks ── */
-        @media (max-width: 640px) {
-            .container { padding: 0 20px; }
-            .section { padding: 60px 0; }
-        }
-
-        /* ── Fixed side elements: hide below 900px ── */
-        @media (max-width: 900px) {
-            .fixed-email, .fixed-social { display: none; }
-        }
-
-        /* ── Nav links active underline fix ── */
-        .nav-links a.active { color: var(--green); }
-
-        /* ── Smooth image load ── */
-        .project-image img { transition: filter 0.4s ease, transform 0.4s ease; }
-
-        /* ── Mobile menu overlay background ── */
-        @media (max-width: 768px) {
-            .nav-links.active::before {
-                content: '';
-                position: fixed;
-                inset: 0;
-                background: rgba(10, 25, 47, 0.6);
-                z-index: -1;
-                backdrop-filter: blur(4px);
-            }
-        }
-
-        /* ── Touch-friendly tap targets ── */
-        @media (hover: none) {
-            .project-links a,
-            .project-card-links a,
-            .icon-links a {
-                padding: 12px;
-            }
-        }
-
-        /* ── Better section spacing on iPad landscape ── */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .container { padding: 0 60px; }
-            .section { padding: 80px 0; }
-            .featured-project { margin-bottom: 70px; }
-        }
-
-        /* ── Experience tab panels on iPad ── */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .experience-tabbed { max-width: 100%; gap: 24px; }
-        }
-
-        /* ── Print styles ── */
-        @media print {
-            .fixed-email, .fixed-social, .navbar,
-            .loader, .menu-toggle { display: none; }
-            body { background: white; color: black; }
-        }
-    </style>
 </head>
 
 <body>
@@ -283,7 +55,7 @@
     <header class="navbar fade-up">
         <nav>
             <div class="logo">
-                <a href="index.html" aria-label="Home">
+                <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
                         <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
                                  fill="none"
@@ -302,20 +74,20 @@
                     </svg>
                 </a>
             </div>
-            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">
+            <div class="menu-toggle" id="mobile-menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
-            <div class="nav-links" id="nav-links" role="navigation" aria-label="Main navigation">
-                <a href="#about"><span class="nav-number">01.</span> About</a>
-                <a href="#experience"><span class="nav-number">02.</span> Experience</a>
-                <a href="#skills"><span class="nav-number">03.</span> Skills</a>
-                <a href="#work"><span class="nav-number">04.</span> Projects</a>
-                <a href="#contact"><span class="nav-number">05.</span> Contact</a>
-                <a href="certificates.html"><span class="nav-number">06.</span> Achievements</a>
-                <a href="resume.html" class="resume-btn">Resume</a>
             </div>
+            <div class="nav-links" id="nav-links">
+    <a href="index.html#about"><span class="nav-number">01.</span> About</a>
+    <a href="index.html#experience"><span class="nav-number">02.</span> Experience</a>
+    <a href="index.html#skills"><span class="nav-number">03.</span> Skills</a>
+    <a href="index.html#work"><span class="nav-number">04.</span> Project</a>
+    <a href="index.html#contact"><span class="nav-number">05.</span> Contact</a>
+    <a href="certificates.html"><span class="nav-number">06.</span> Achivements</a>
+    <a href="resume.html" class="resume-btn">Resume</a>
+</div>
         </nav>
     </header>
 
@@ -328,11 +100,11 @@
             <p class="hero-description fade-up">
                 Data Science graduate student skilled in Python, SQL, and machine learning. Passionate about building end-to-end ML applications, real-time recommendation systems, and interactive dashboards that turn data into actionable insights.
             </p>
-            <a href="mailto:workingwithsanjay@gmail.com" class="cta-button fade-up">Get In Touch</a>
+            <a href="mailto:workingwithsanjay@gmail.com" class="cta-button">Get In Touch</a>
         </div>
     </section>
 
-    <!-- ABOUT (01) -->
+    <!-- ABOUT -->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-heading fade-up">
@@ -362,25 +134,25 @@
                     <ul class="skills-list fade-up">
                         <li>Python</li>
                         <li>SQL</li>
-                        <li>Pandas &amp; NumPy</li>
+                        <li>Pandas & NumPy</li>
                         <li>Scikit-Learn</li>
                         <li>Streamlit</li>
-                        <li>Power BI &amp; Tableau</li>
+                        <li>Power BI & Tableau</li>
                     </ul>
                 </div>
 
                 <div class="about-image fade-up">
                     <div class="image-wrapper">
-                        <img src="static/WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg"
-                             alt="Sanjay Sharma"
-                             loading="lazy">
+                        <img src="static/WhatsApp Image 2025-12-06 at 11.30.02_87808a94.jpg" alt="Sanjay Sharma">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE (02) -->
+    <!-- ===================== -->
+    <!-- EXPERIENCE SECTION    -->
+    <!-- ===================== -->
     <section id="experience" class="section">
         <div class="container">
             <h2 class="section-heading fade-up">
@@ -388,7 +160,10 @@
                 Where I've Worked
             </h2>
 
+            <!-- Brittany Chiang–style tabbed experience -->
             <div class="experience-tabbed fade-up">
+
+                <!-- Left rail: tab buttons + sliding indicator -->
                 <div class="tab-nav" role="tablist">
                     <div class="tab-indicator"></div>
                     <button class="tab-btn active"
@@ -400,13 +175,17 @@
                     </button>
                 </div>
 
+                <!-- Right panel: job details -->
                 <div class="tab-panels">
+
                     <div class="tab-panel active" id="tab-panel-redkross" role="tabpanel">
+                        <!-- Title row -->
                         <h3 class="tab-panel__title">
                             Cyber Security Intern
                             <span class="tab-panel__company">@ RedKross Research Foundation</span>
                         </h3>
 
+                        <!-- Date + location -->
                         <p class="tab-panel__date">
                             <span class="tab-panel__date-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -419,19 +198,23 @@
                             </span>
                         </p>
 
+                        <!-- Duties list (BC uses ▹ bullets) -->
                         <ul class="tab-panel__duties">
                             <li>Developed and trained machine learning models to detect phishing URLs and malicious network traffic in real time, achieving 94% detection accuracy.</li>
                             <li>Built end-to-end cybersecurity dashboards using Python and Streamlit to visualize live threat analytics for the Security Operations team.</li>
                             <li>Performed vulnerability assessments on internal systems and produced detailed security reports with actionable remediation recommendations.</li>
                         </ul>
 
+                        <!-- Certificate link -->
                         <a href="certificates.html#redkross" class="tab-panel__cert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                             View Certificate
                         </a>
                     </div>
+
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -449,18 +232,22 @@
                         <h3><span>▹</span> Programming</h3>
                         <p>Python, R, SQL</p>
                     </div>
+
                     <div class="skill-category fade-up">
                         <h3><span>▹</span> Data Analysis</h3>
                         <p>Pandas, NumPy, Matplotlib, Excel, Power BI, Tableau</p>
                     </div>
+
                     <div class="skill-category fade-up">
                         <h3><span>▹</span> Machine Learning</h3>
                         <p>Regression, Classification, Clustering, Hyperparameter Tuning</p>
                     </div>
+
                     <div class="skill-category fade-up">
-                        <h3><span>▹</span> Tools &amp; IDEs</h3>
+                        <h3><span>▹</span> Tools & IDEs</h3>
                         <p>VS Code, PyCharm, Jupyter, Colab, Git</p>
                     </div>
+
                     <div class="skill-category fade-up">
                         <h3><span>▹</span> Core Strengths</h3>
                         <p>EDA, Data Cleaning, Feature Engineering, Model Evaluation, Statistical Analysis</p>
@@ -596,7 +383,7 @@
             <!-- OTHER NOTEWORTHY PROJECTS -->
             <div class="other-projects">
                 <h3 class="other-projects-heading fade-up">Other Noteworthy Projects</h3>
-                <a href="archive.html" class="archive-link">view the archive</a>
+                <a href="archive.html" class="archive-link fade-up">view the archive</a>
                 <div class="projects-grid">
 
                     <div class="project-card fade-up">
@@ -684,10 +471,10 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-social-mobile">
-            <a href="https://github.com/Sanjay20057" target="_blank" rel="noopener" aria-label="GitHub">
+            <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             </a>
-            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
             <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
@@ -695,7 +482,7 @@
             </a>
         </div>
         <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
-            <p>Designed &amp; Built by Sanjay Sharma</p>
+            <p>Designed & Built by Sanjay Sharma</p>
         </a>
     </footer>
 
