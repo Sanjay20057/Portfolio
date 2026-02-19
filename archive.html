@@ -4,18 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Archive | Sanjay Sharma</title>
-    <link rel="icon" type="image/png" href="static/Logo/Logo.png" />
+    <link rel="icon" type="image/png" href="staticLogo/Logo.png" />
     <link rel="stylesheet" href="static/style.css" />
     <style>
 
-        /* ═══════════════════════════════════════════
-           GLOBAL OVERFLOW FIX
-        ═══════════════════════════════════════════ */
-        html, body { overflow-x: hidden; }
+        /* ============================================================
+           ARCHIVE PAGE — Brittany Chiang v4 style
+        ============================================================ */
 
-        /* ═══════════════════════════════════════════
-           FIXED SIDE SOCIAL — LEFT
-        ═══════════════════════════════════════════ */
+        /* ── Fixed side social bar LEFT ── */
         .archive-fixed-social {
             position: fixed;
             left: 40px;
@@ -58,9 +55,7 @@
             margin-top: 6px;
         }
 
-        /* ═══════════════════════════════════════════
-           FIXED SIDE EMAIL — RIGHT
-        ═══════════════════════════════════════════ */
+        /* ── Fixed side email bar RIGHT ── */
         .archive-fixed-email {
             position: fixed;
             right: 40px;
@@ -102,24 +97,19 @@
             to   { opacity: 1; }
         }
 
-        /* ═══════════════════════════════════════════
-           PAGE LAYOUT
-        ═══════════════════════════════════════════ */
+        /* ── Page wrapper ── */
         .archive-page {
             min-height: 100vh;
-            /* Horizontal padding accounts for fixed side elements on PC */
-            padding: 140px 120px 120px 120px;
+            padding: 200px 200px 150px;
             max-width: 1600px;
             margin: 0 auto;
         }
 
-        /* ═══════════════════════════════════════════
-           BACK LINK
-        ═══════════════════════════════════════════ */
+        /* ── Back link ── */
         .archive-back {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-family: var(--font-mono);
             font-size: var(--fz-sm);
             color: var(--green);
@@ -127,129 +117,103 @@
             transition: var(--transition);
             text-decoration: none;
             opacity: 0;
-            animation: headerIn 0.5s var(--easing) 0.1s forwards;
+            animation: fadeUp 0.5s var(--easing) 0.1s forwards;
         }
 
-        .archive-back svg { flex-shrink: 0; transition: transform 0.25s var(--easing); }
-        .archive-back:hover svg { transform: translateX(-5px); }
+        .archive-back svg {
+            flex-shrink: 0;
+            transition: transform 0.25s var(--easing);
+        }
 
-        /* ═══════════════════════════════════════════
-           PAGE HEADING
-        ═══════════════════════════════════════════ */
+        .archive-back:hover svg {
+            transform: translateX(-5px);
+        }
+
+        /* ── Heading — large, BC style ── */
         .archive-header {
-            margin-bottom: 60px;
+            margin-bottom: 80px;
             opacity: 0;
-            animation: headerIn 0.5s var(--easing) 0.18s forwards;
+            animation: fadeUp 0.5s var(--easing) 0.18s forwards;
         }
 
         .archive-header h1 {
-            font-size: clamp(28px, 6vw, 56px);
+            font-size: clamp(40px, 8vw, 80px);
             color: var(--lightest-slate);
-            margin: 0 0 10px;
-            line-height: 1.05;
+            margin: 0 0 12px;
+            line-height: 1.0;
+            font-weight: 600;
         }
 
         .archive-header p {
             font-family: var(--font-mono);
-            font-size: var(--fz-sm);
+            font-size: var(--fz-md);
             color: var(--green);
             margin: 0;
         }
 
-        @keyframes headerIn {
-            from { opacity: 0; transform: translateY(14px); }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ═══════════════════════════════════════════
-           TABLE WRAPPER
-        ═══════════════════════════════════════════ */
+        /* ── Table wrapper ── */
         .archive-table-wrap {
             width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
             opacity: 0;
-            animation: headerIn 0.5s var(--easing) 0.28s forwards;
-            /* Subtle scrollbar hint on mobile */
-            scrollbar-width: thin;
-            scrollbar-color: var(--dark-slate) transparent;
+            animation: fadeUp 0.5s var(--easing) 0.28s forwards;
         }
 
-        .archive-table-wrap::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .archive-table-wrap::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .archive-table-wrap::-webkit-scrollbar-thumb {
-            background: var(--dark-slate);
-            border-radius: 4px;
-        }
-
-        /* ═══════════════════════════════════════════
-           TABLE
-        ═══════════════════════════════════════════ */
+        /* ── Table ── */
         .archive-table {
             width: 100%;
             border-collapse: collapse;
             table-layout: auto;
-            /* Minimum width ensures table doesn't collapse too small */
-            min-width: 520px;
         }
 
-        /* Head */
         .archive-table thead tr {
             border-bottom: 1px solid var(--lightest-navy);
         }
 
         .archive-table thead th {
-            padding: 12px 24px 12px 0;
+            padding: 10px 20px 10px 2px;
             font-family: var(--font-mono);
             font-size: var(--fz-xs);
             font-weight: 400;
-            color: var(--slate);
+            color: var(--light-slate);
             text-align: left;
             white-space: nowrap;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
         }
 
         .archive-table thead th:last-child { padding-right: 0; }
 
-        /* Body rows */
         .archive-table tbody tr {
             border-bottom: 1px solid var(--lightest-navy);
-            transition: background-color 0.2s ease;
+            transition: background-color 0.15s ease;
             opacity: 0;
-            transform: translateY(8px);
-            animation: rowIn 0.4s var(--easing) forwards;
+            transform: translateY(6px);
+            animation: rowIn 0.35s var(--easing) forwards;
         }
 
         .archive-table tbody tr:last-child { border-bottom: none; }
-
         .archive-table tbody tr:hover { background-color: var(--light-navy); }
         .archive-table tbody tr:hover .td-title-text { color: var(--green); }
 
-        /* Stagger rows */
         .archive-table tbody tr:nth-child(1)  { animation-delay: 0.32s; }
-        .archive-table tbody tr:nth-child(2)  { animation-delay: 0.37s; }
-        .archive-table tbody tr:nth-child(3)  { animation-delay: 0.42s; }
-        .archive-table tbody tr:nth-child(4)  { animation-delay: 0.47s; }
-        .archive-table tbody tr:nth-child(5)  { animation-delay: 0.52s; }
-        .archive-table tbody tr:nth-child(6)  { animation-delay: 0.57s; }
-        .archive-table tbody tr:nth-child(7)  { animation-delay: 0.62s; }
-        .archive-table tbody tr:nth-child(8)  { animation-delay: 0.67s; }
-        .archive-table tbody tr:nth-child(9)  { animation-delay: 0.72s; }
-        .archive-table tbody tr:nth-child(10) { animation-delay: 0.77s; }
+        .archive-table tbody tr:nth-child(2)  { animation-delay: 0.36s; }
+        .archive-table tbody tr:nth-child(3)  { animation-delay: 0.40s; }
+        .archive-table tbody tr:nth-child(4)  { animation-delay: 0.44s; }
+        .archive-table tbody tr:nth-child(5)  { animation-delay: 0.48s; }
+        .archive-table tbody tr:nth-child(6)  { animation-delay: 0.52s; }
+        .archive-table tbody tr:nth-child(7)  { animation-delay: 0.56s; }
 
         @keyframes rowIn {
             to { opacity: 1; transform: translateY(0); }
         }
 
         .archive-table tbody td {
-            padding: 16px 24px 16px 0;
+            padding: 14px 20px 14px 2px;
             vertical-align: middle;
         }
 
@@ -261,56 +225,46 @@
             font-size: var(--fz-sm);
             color: var(--green);
             white-space: nowrap;
-            width: 55px;
+            width: 60px;
         }
 
         /* Title */
-        .td-title { width: auto; min-width: 180px; }
+        .td-title { padding-right: 24px; }
 
         .td-title-text {
             color: var(--lightest-slate);
-            font-size: var(--fz-md);
+            font-size: var(--fz-lg);
             font-weight: 500;
-            transition: color 0.2s ease;
+            transition: color 0.15s ease;
+            line-height: 1.3;
         }
 
-        /* Built At */
+        /* Made at */
         .td-built {
-            color: var(--slate);
+            color: var(--light-slate);
             font-size: var(--fz-sm);
             white-space: nowrap;
-            width: 180px;
+            width: 160px;
+            padding-right: 24px;
         }
 
-        /* Made With */
-        .td-made { width: auto; }
+        /* Built with — BC uses dot-separated inline text */
+        .td-made { padding-right: 24px; }
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            min-width: 160px;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            padding: 3px 11px;
-            border-radius: 20px;
-            background-color: var(--green-tint);
-            color: var(--green);
+        .tech-list {
             font-family: var(--font-mono);
-            font-size: 11px;
-            white-space: nowrap;
-            letter-spacing: 0.03em;
-            transition: background-color 0.2s ease;
+            font-size: var(--fz-xs);
+            color: var(--light-slate);
+            line-height: 1.8;
         }
 
-        .archive-table tbody tr:hover .tech-tag {
-            background-color: rgba(100, 255, 218, 0.15);
+        .tech-list span + span::before {
+            content: ' · ';
+            color: var(--slate);
         }
 
         /* Links */
-        .td-links { width: 90px; }
+        .td-links { width: 80px; }
 
         .icon-links {
             display: flex;
@@ -338,166 +292,57 @@
             display: block;
         }
 
-        /* Force navbar visible */
+        /* Navbar forced visible */
         .navbar {
             opacity: 1 !important;
             transform: none !important;
         }
 
-        /* ═══════════════════════════════════════════
-           MOBILE CARD VIEW
-           Below 600px, switch from table to cards
-        ═══════════════════════════════════════════ */
-        .mobile-cards { display: none; }
-
-        /* ═══════════════════════════════════════════
-           RESPONSIVE BREAKPOINTS
-        ═══════════════════════════════════════════ */
-
-        /* Large desktop — unchanged */
-        @media (min-width: 1400px) {
-            .archive-page { padding: 140px 160px 120px 160px; }
-        }
-
-        /* Standard desktop / laptop */
-        @media (max-width: 1200px) {
-            .archive-page { padding: 140px 80px 100px 80px; }
-        }
-
-        /* Tablet landscape — hide side bars */
+        /* ════════════════════
+           RESPONSIVE
+        ════════════════════ */
         @media (max-width: 1100px) {
+            .archive-page { padding: 160px 100px 120px; }
+        }
+
+        @media (max-width: 900px) {
+            .archive-page { padding: 140px 60px 100px; }
             .archive-fixed-social,
             .archive-fixed-email { display: none; }
-            .archive-page { padding: 130px 60px 80px 60px; }
-        }
-
-        /* Tablet portrait */
-        @media (max-width: 900px) {
-            .archive-page { padding: 110px 40px 60px 40px; }
             .col-built, .td-built { display: none; }
         }
 
-        /* Large mobile */
         @media (max-width: 640px) {
-            .archive-page { padding: 100px 20px 60px 20px; }
+            .archive-page { padding: 100px 25px 80px; }
+            .archive-header { margin-bottom: 50px; }
+            .archive-header h1 { font-size: clamp(36px, 11vw, 56px); }
+            .archive-back { margin-bottom: 32px; }
             .col-made, .td-made { display: none; }
-            .archive-header h1 { font-size: clamp(24px, 7vw, 36px); }
-            .archive-back { margin-bottom: 30px; }
-            .archive-header { margin-bottom: 36px; }
+            .td-title-text { white-space: normal; font-size: var(--fz-md); }
+            .archive-table thead th,
+            .archive-table tbody td { padding-right: 12px; }
+            .icon-links a { padding: 8px 6px; }
+            .icon-links a svg { width: 20px; height: 20px; }
         }
 
-        /* Small mobile — switch to card layout */
         @media (max-width: 480px) {
-            /* Hide table, show cards */
-            .archive-table-wrap { display: none; }
-            .mobile-cards { display: block; }
-
-            .project-mobile-card {
-                background-color: var(--light-navy);
-                border-radius: 8px;
-                padding: 20px 18px;
-                margin-bottom: 16px;
-                border: 1px solid var(--lightest-navy);
-                transition: background-color 0.2s ease, transform 0.2s ease;
-                opacity: 0;
-                animation: rowIn 0.4s var(--easing) forwards;
-            }
-
-            .project-mobile-card:nth-child(1) { animation-delay: 0.32s; }
-            .project-mobile-card:nth-child(2) { animation-delay: 0.37s; }
-            .project-mobile-card:nth-child(3) { animation-delay: 0.42s; }
-            .project-mobile-card:nth-child(4) { animation-delay: 0.47s; }
-            .project-mobile-card:nth-child(5) { animation-delay: 0.52s; }
-            .project-mobile-card:nth-child(6) { animation-delay: 0.57s; }
-            .project-mobile-card:nth-child(7) { animation-delay: 0.62s; }
-
-            .project-mobile-card:hover {
-                background-color: var(--lightest-navy);
-                transform: translateY(-2px);
-            }
-
-            .pmc-top {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                margin-bottom: 10px;
-            }
-
-            .pmc-year {
-                font-family: var(--font-mono);
-                font-size: var(--fz-xs);
-                color: var(--green);
-                margin-bottom: 4px;
-            }
-
-            .pmc-title {
-                color: var(--lightest-slate);
-                font-size: var(--fz-md);
-                font-weight: 500;
-                line-height: 1.3;
-                flex: 1;
-                margin-right: 12px;
-            }
-
-            .pmc-links {
-                display: flex;
-                gap: 4px;
-                flex-shrink: 0;
-            }
-
-            .pmc-links a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 6px;
-                color: var(--light-slate);
-                transition: var(--transition);
-            }
-
-            .pmc-links a:hover { color: var(--green); }
-            .pmc-links a svg { width: 17px; height: 17px; }
-
-            .pmc-tags {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 5px;
-                margin-top: 10px;
-            }
-
-            .pmc-tag {
-                font-family: var(--font-mono);
-                font-size: 10px;
-                color: var(--green);
-                background-color: var(--green-tint);
-                padding: 2px 9px;
-                border-radius: 20px;
-            }
-
-            .pmc-built {
-                font-family: var(--font-mono);
-                font-size: var(--fz-xs);
-                color: var(--slate);
-                margin-top: 6px;
-            }
+            .archive-page { padding: 95px 18px 60px; }
+            .td-year { font-size: var(--fz-xs); width: 46px; }
+            .archive-table tbody td { padding-top: 12px; padding-bottom: 12px; }
         }
 
-        /* Touch targets — bigger hit areas on touch devices */
-        @media (hover: none) {
-            .icon-links a { padding: 10px 9px; }
-            .archive-back { padding: 8px 0; }
-        }
     </style>
 </head>
 <body>
 
     <!-- FIXED SIDE SOCIAL — LEFT -->
     <div class="archive-fixed-social">
-        <a href="https://github.com/Sanjay20057" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
             </svg>
         </a>
-        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                 <rect x="2" y="9" width="4" height="12"/>
@@ -511,11 +356,11 @@
         <a href="mailto:workingwithsanjay@gmail.com">workingwithsanjay@gmail.com</a>
     </div>
 
-    <!-- HEADER NAV -->
+    <!-- NAVBAR -->
     <header class="navbar appear">
         <nav>
             <div class="logo">
-                <a href="index.html" aria-label="Home">
+                <a href="index.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
                         <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
                                  fill="none" stroke="currentColor" stroke-width="2.5"
@@ -526,13 +371,12 @@
                     </svg>
                 </a>
             </div>
-            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false">
+            <div class="menu-toggle" id="mobile-menu">
                 <span></span><span></span><span></span>
-            </button>
-            <div class="nav-links" id="nav-links" role="navigation">
-                <a href="index.html#about"><span class="nav-number">01.</span> About</a>
-                <a href="index.html#work"><span class="nav-number">02.</span> Projects</a>
-                <a href="certificates.html"><span class="nav-number">03.</span> Achievements</a>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html"><span class="nav-number">01.</span> Home</a>
+                <a href="certificates.html"><span class="nav-number">02.</span> Achivements</a>
                 <a href="resume.html" class="resume-btn">Resume</a>
             </div>
         </nav>
@@ -540,58 +384,42 @@
 
     <!-- ARCHIVE PAGE -->
     <main class="archive-page">
-
-        <!-- Back link -->
-        <a href="index.html#work" class="archive-back">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"/>
-                <polyline points="12 19 5 12 12 5"/>
-            </svg>
-            Back To The Portfolio
-        </a>
-
         <!-- Heading -->
         <div class="archive-header">
-            <h1>All Projects</h1>
+            <h1>Archive</h1>
             <p>A big list of things I've worked on</p>
         </div>
 
-        <!-- ══════════════════════════════
-             DESKTOP / TABLET: Wide Table
-        ══════════════════════════════ -->
+        <!-- Table -->
         <div class="archive-table-wrap">
             <table class="archive-table">
                 <thead>
                     <tr>
                         <th class="col-year">Year</th>
                         <th class="col-title">Title</th>
-                        <th class="col-built">Built&nbsp;at</th>
-                        <th class="col-made">Made&nbsp;with</th>
+                        <th class="col-built">Made&nbsp;at</th>
+                        <th class="col-made">Built&nbsp;with</th>
                         <th class="col-links">Link</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr>
                         <td class="td-year">2026</td>
                         <td class="td-title"><span class="td-title-text">Real-Time Entertainment Intelligence</span></td>
                         <td class="td-built">Personal</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">HTML/CSS/JS</span>
-                                <span class="tech-tag">TMDB API</span>
-                                <span class="tech-tag">Chart.js</span>
-                                <span class="tech-tag">Responsive Design</span>
+                            <div class="tech-list">
+                                <span>HTML/CSS/JS</span><span>TMDB API</span><span>Chart.js</span><span>Responsive Design</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/Real-Time-Entertainment-Intelligence" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/Real-Time-Entertainment-Intelligence" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://real-time-entertainment-intelligence.up.railway.app/" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://real-time-entertainment-intelligence.up.railway.app/" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -602,20 +430,17 @@
                         <td class="td-title"><span class="td-title-text">AI Web Vulnerability Scanner</span></td>
                         <td class="td-built">RedKross Internship</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">AI/ML</span>
-                                <span class="tech-tag">Security Testing</span>
-                                <span class="tech-tag">OWASP</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>AI/ML</span><span>Security Testing</span><span>OWASP</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/AI-Web-Vulnerability-Scanner" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/AI-Web-Vulnerability-Scanner" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://ai-web-vulnerability-scanner.streamlit.app/" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://ai-web-vulnerability-scanner.streamlit.app/" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -626,20 +451,17 @@
                         <td class="td-title"><span class="td-title-text">Cyber Threat Detection Suite</span></td>
                         <td class="td-built">RedKross Internship</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Streamlit</span>
-                                <span class="tech-tag">Machine Learning</span>
-                                <span class="tech-tag">Cybersecurity</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>Streamlit</span><span>Machine Learning</span><span>Cybersecurity</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -650,20 +472,17 @@
                         <td class="td-title"><span class="td-title-text">Spotify Real-Time Recommendation System</span></td>
                         <td class="td-built">Personal</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Streamlit</span>
-                                <span class="tech-tag">Spotify API</span>
-                                <span class="tech-tag">Recommendation System</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>Streamlit</span><span>Spotify API</span><span>Recommendation System</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -674,20 +493,17 @@
                         <td class="td-title"><span class="td-title-text">Used Car Price Prediction</span></td>
                         <td class="td-built">DTSS College</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Regression</span>
-                                <span class="tech-tag">Feature Engineering</span>
-                                <span class="tech-tag">Scikit-Learn</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>Regression</span><span>Feature Engineering</span><span>Scikit-Learn</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -698,20 +514,17 @@
                         <td class="td-title"><span class="td-title-text">Movie Recommendation System</span></td>
                         <td class="td-built">DTSS College</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">TF-IDF</span>
-                                <span class="tech-tag">Scikit-Learn</span>
-                                <span class="tech-tag">NLP</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>TF-IDF</span><span>Scikit-Learn</span><span>NLP</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
@@ -722,167 +535,39 @@
                         <td class="td-title"><span class="td-title-text">IPL Data Analysis Dashboard</span></td>
                         <td class="td-built">DTSS College</td>
                         <td class="td-made">
-                            <div class="tech-tags">
-                                <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Pandas</span>
-                                <span class="tech-tag">Matplotlib</span>
-                                <span class="tech-tag">Streamlit</span>
+                            <div class="tech-list">
+                                <span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Streamlit</span>
                             </div>
                         </td>
                         <td class="td-links">
                             <div class="icon-links">
-                                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" rel="noopener" aria-label="GitHub">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                                 </a>
-                                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" aria-label="External Link">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                                 </a>
                             </div>
                         </td>
                     </tr>
+
                 </tbody>
             </table>
         </div>
-
-        <!-- ══════════════════════════════
-             MOBILE ONLY: Card layout (<480px)
-        ══════════════════════════════ -->
-        <div class="mobile-cards">
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2026</div>
-                        <div class="pmc-title">Real-Time Entertainment Intelligence</div>
-                        <div class="pmc-built">Personal</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/Real-Time-Entertainment-Intelligence" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://real-time-entertainment-intelligence.up.railway.app/" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">HTML/CSS/JS</span><span class="pmc-tag">TMDB API</span><span class="pmc-tag">Chart.js</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2026</div>
-                        <div class="pmc-title">AI Web Vulnerability Scanner</div>
-                        <div class="pmc-built">RedKross Internship</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/AI-Web-Vulnerability-Scanner" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://ai-web-vulnerability-scanner.streamlit.app/" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">AI/ML</span><span class="pmc-tag">OWASP</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2026</div>
-                        <div class="pmc-title">Cyber Threat Detection Suite</div>
-                        <div class="pmc-built">RedKross Internship</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">Streamlit</span><span class="pmc-tag">ML</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2025</div>
-                        <div class="pmc-title">Spotify Recommendation System</div>
-                        <div class="pmc-built">Personal</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/Spotify-Recommendation-System-Real-Time" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://spotify-recommendation-system-real-time.streamlit.app" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">Spotify API</span><span class="pmc-tag">Streamlit</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2025</div>
-                        <div class="pmc-title">Used Car Price Prediction</div>
-                        <div class="pmc-built">DTSS College</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">Regression</span><span class="pmc-tag">Scikit-Learn</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2024</div>
-                        <div class="pmc-title">Movie Recommendation System</div>
-                        <div class="pmc-built">DTSS College</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">TF-IDF</span><span class="pmc-tag">NLP</span>
-                </div>
-            </div>
-
-            <div class="project-mobile-card">
-                <div class="pmc-top">
-                    <div>
-                        <div class="pmc-year">2024</div>
-                        <div class="pmc-title">IPL Data Analysis Dashboard</div>
-                        <div class="pmc-built">DTSS College</div>
-                    </div>
-                    <div class="pmc-links">
-                        <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-                        <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" rel="noopener" aria-label="Live"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-                    </div>
-                </div>
-                <div class="pmc-tags">
-                    <span class="pmc-tag">Python</span><span class="pmc-tag">Pandas</span><span class="pmc-tag">Streamlit</span>
-                </div>
-            </div>
-
-        </div><!-- /mobile-cards -->
 
     </main>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-social-mobile">
-            <a href="https://github.com/Sanjay20057" target="_blank" rel="noopener" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
             <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
         </div>
         <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
@@ -899,38 +584,23 @@
             if (mobileMenu && navLinks) {
                 mobileMenu.addEventListener("click", (e) => {
                     e.stopPropagation();
-                    const isOpen = navLinks.classList.toggle("active");
+                    navLinks.classList.toggle("active");
                     mobileMenu.classList.toggle("active");
-                    mobileMenu.setAttribute("aria-expanded", isOpen);
-                    document.body.style.overflow = isOpen ? 'hidden' : '';
+                    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
                 });
-
                 document.addEventListener("click", (e) => {
                     if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
                         navLinks.classList.remove("active");
                         mobileMenu.classList.remove("active");
-                        mobileMenu.setAttribute("aria-expanded", "false");
                         document.body.style.overflow = '';
                     }
                 });
-
                 document.querySelectorAll(".nav-links a").forEach(link => {
                     link.addEventListener("click", () => {
                         navLinks.classList.remove("active");
                         mobileMenu.classList.remove("active");
-                        mobileMenu.setAttribute("aria-expanded", "false");
                         document.body.style.overflow = '';
                     });
-                });
-
-                /* ESC to close */
-                document.addEventListener("keydown", (e) => {
-                    if (e.key === "Escape" && navLinks.classList.contains("active")) {
-                        navLinks.classList.remove("active");
-                        mobileMenu.classList.remove("active");
-                        mobileMenu.setAttribute("aria-expanded", "false");
-                        document.body.style.overflow = '';
-                    }
                 });
             }
 
