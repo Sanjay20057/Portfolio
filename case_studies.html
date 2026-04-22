@@ -383,10 +383,11 @@
         </nav>
     </header>
 
-    <!-- MOBILE NAVIGATION TABS — order matches archive.html -->
+    <!-- MOBILE NAVIGATION TABS -->
     <div class="mobile-case-nav" id="mobileNav">
         <div class="mobile-nav-container">
-            <button class="mobile-case-tab active"  data-target="entertainment">Entertainment</button>
+            <button class="mobile-case-tab active"  data-target="deepscan">DeepScan</button>
+            <button class="mobile-case-tab"          data-target="entertainment">Entertainment</button>
             <button class="mobile-case-tab"          data-target="vuln-scanner">Vuln Scanner</button>
             <button class="mobile-case-tab"          data-target="cyber">Cyber Threat</button>
             <button class="mobile-case-tab"          data-target="spotify">Spotify</button>
@@ -400,11 +401,12 @@
     <div class="case-study-wrapper">
         <div class="case-layout">
 
-            <!-- SIDEBAR — order matches archive.html -->
+            <!-- SIDEBAR -->
             <aside class="case-sidebar fade-up">
                 <h3>Case Studies</h3>
                 <div class="case-nav-list">
-                    <div class="case-link active" data-target="entertainment">Entertainment Dashboard</div>
+                    <div class="case-link active" data-target="deepscan">DeepScan — Deepfake Detection</div>
+                    <div class="case-link"         data-target="entertainment">Entertainment Dashboard</div>
                     <div class="case-link"         data-target="vuln-scanner">AI Vulnerability Scanner</div>
                     <div class="case-link"         data-target="cyber">Cyber Threat Detection</div>
                     <div class="case-link"         data-target="spotify">Spotify Recommendation</div>
@@ -418,9 +420,114 @@
             <main class="case-content">
 
                 <!-- ══════════════════════════════════════
-                     1. ENTERTAINMENT DASHBOARD
+                     1. DEEPSCAN — DEEPFAKE DETECTION (NEW)
                 ══════════════════════════════════════ -->
-                <div class="case-card active fade-up" id="entertainment">
+                <div class="case-card active fade-up" id="deepscan">
+                    <h2>DeepScan — Deepfake Detector</h2>
+                    <div class="case-tags">
+                        <span>Python</span>
+                        <span>Flask / FastAPI</span>
+                        <span>MobileNetV2 CNN</span>
+                        <span>TensorFlow / Keras</span>
+                        <span>Groq LLM</span>
+                        <span>jsPDF</span>
+                        <span>OpenCV</span>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Overview</strong>
+                        <p>DeepScan is a full-stack AI deepfake detection platform that analyses images and videos for signs of synthetic manipulation using a CNN (MobileNetV2) pipeline. Users upload a file through a Gemini-style chat interface and instantly receive a verdict — complete with fake probability scores, frame-by-frame analysis, timeline charts, Groq LLM explanations in plain English, and a downloadable multi-page professional PDF report. The platform runs on a Flask web gateway + FastAPI inference backend, with automatic fallback to a demo simulation mode when the server is offline.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Problem Statement</strong>
+                        <p>Deepfakes — AI-generated images and face-swapped videos — are becoming increasingly indistinguishable from authentic media. Existing detection tools are either closed-source, expensive API-based services, or academic prototypes with no usable interface. DeepScan bridges this gap by combining a trained CNN classifier with a polished, user-friendly frontend, an LLM-powered explanation engine, and professional-grade PDF reporting — all deployable with a single command and usable without any prior technical knowledge.</p>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>CNN Detection Pipeline</strong>
+                        <ul>
+                            <li><strong>Model:</strong> MobileNetV2 fine-tuned as a binary deepfake classifier (<code>deepfake_model.h5</code>), trained with sigmoid output where HIGH sigmoid = REAL and LOW sigmoid = FAKE</li>
+                            <li><strong>Inverted scoring:</strong> <code>fake_prob = 1.0 − raw_sigmoid</code> — this inversion aligns the probability scale so that higher fake_prob always means higher likelihood of manipulation</li>
+                            <li><strong>Decision threshold:</strong> <code>fake_prob ≥ 0.50 → FAKE</code>, otherwise REAL — fixed and calibrated to the model's training distribution</li>
+                            <li><strong>Image inference:</strong> Single forward pass through MobileNetV2 on a 224×224 RGB input, returning label + confidence + fake_prob in under one second</li>
+                            <li><strong>Video inference:</strong> Up to 20 frames sampled evenly across the video duration via OpenCV, scored in a single batched CNN pass — overall verdict derived from mean fake_prob across all sampled frames</li>
+                            <li><strong>Thumbnail generation:</strong> Each sampled frame is resized to 240px max dimension and base64-encoded as JPEG for inline display in the frontend and PDF</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Backend Architecture</strong>
+                        <ul>
+                            <li><strong>Flask web gateway (<code>flask_app.py</code>):</strong> Serves the static frontend, proxies file uploads to FastAPI, exposes <code>/api/status</code>, <code>/api/analyse/image</code>, <code>/api/analyse/video</code>, and <code>/api/groq/explain</code> — with CORS enabled for cross-origin frontends (Netlify, GitHub Pages)</li>
+                            <li><strong>FastAPI inference server (<code>video_api.py</code>):</strong> Loads the Keras model at startup, handles image and video analysis requests with full Pydantic response schemas, and manages temporary file lifecycle for video processing</li>
+                            <li><strong>Startup sequence:</strong> FastAPI launches first (port 8000) to allow model warm-up, then Gunicorn/Flask starts (port 7860) after a 20-second delay — coordinated via a shell startup script</li>
+                            <li><strong>Groq integration:</strong> Server-side Groq proxy in Flask accepts prompts and calls LLaMA 3.1-8b-instant (with llama3-70b-8192 as fallback) — API key stored in <code>.env</code> and never exposed to the client</li>
+                            <li><strong>History persistence:</strong> Every analysis is appended to a local <code>history.json</code> file with filename, verdict, fake_prob, and timestamp — accessible via <code>/api/history</code></li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Frontend Architecture</strong>
+                        <ul>
+                            <li><strong>Chat interface:</strong> Gemini-inspired chat UI with bot/user message bubbles, typing indicators, and smooth scroll — built in pure vanilla JavaScript with zero frameworks</li>
+                            <li><strong>File handling:</strong> Drag-and-drop + file picker with 5 MB size enforcement, MIME/extension validation, and live preview (image thumbnail or video icon chip)</li>
+                            <li><strong>Mode switching:</strong> Image / Video mode pills auto-switch based on detected file type; mode also changes the placeholder text and analysis endpoint</li>
+                            <li><strong>Result rendering:</strong> Verdict banner, fake probability bar, metric chip grid, signal detail table, frame grid (video), Canvas-based timeline chart (video), and collapsible frame data table — all rendered inline in the chat</li>
+                            <li><strong>Demo mode:</strong> When the Flask server is unreachable, a simulated result is generated client-side using <code>buildDemoResult()</code>, matching the real API schema exactly so all UI components render identically</li>
+                            <li><strong>Settings panel:</strong> Slide-in advanced panel for Flask server URL override and Groq API key entry — both persisted to localStorage</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Groq LLM Explanation Engine</strong>
+                        <ul>
+                            <li><strong>Image explanation:</strong> Sends CNN label, confidence, fake_prob, and threshold context to Groq — receives 3–5 sentences describing the verdict, likely visual artefacts detected, and confidence caveats</li>
+                            <li><strong>Video explanation:</strong> Sends overall verdict, fake frame ratio, and CNN stats — receives a 4–6 sentence video-level analysis</li>
+                            <li><strong>Per-frame Groq analysis:</strong> Top 5 highest-probability fake frames are sent individually to Groq for 2–3 sentence per-frame explanations, displayed alongside thumbnails with probability bars</li>
+                            <li><strong>Model fallback:</strong> Attempts <code>llama-3.1-8b-instant</code> first; falls back to <code>llama3-70b-8192</code> on 400/404; handles 401 (invalid key), 429 (rate limit), and timeout errors gracefully with user-facing messages</li>
+                            <li><strong>Dual key path:</strong> Client-side Groq key (direct browser → Groq API call) or server-side key via Flask proxy — whichever is available takes priority</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>PDF Report Generation</strong>
+                        <ul>
+                            <li><strong>Library:</strong> jsPDF (client-side, no server needed) — generates multi-page A4 PDF entirely in the browser</li>
+                            <li><strong>Image report (2 pages):</strong> Dark-themed header with verdict banner, analysed image embed with aspect-ratio preservation, executive summary (Groq-written), fake probability bar with threshold marker, detection metrics chips, CNN signal detail table, artefact reference grid, recommendations section, and methodology disclaimer</li>
+                            <li><strong>Video report (4+ pages):</strong> Cover page with verdict + frame statistics, executive summary, overall probability bar chart, technical methodology, CNN model results, frame-by-frame bar chart timeline, complete per-frame card grid (thumbnail + narrative + metrics), full frame data table, forensic conclusion, and methodology</li>
+                            <li><strong>Design system:</strong> Custom dark colour palette (10 CSS variables mapped to jsPDF RGB arrays), rounded-rect chips, gradient probability bars, threshold tick lines, and per-frame verdict badges</li>
+                            <li><strong>Groq-enriched content:</strong> All prose sections (executive summary, technical analysis, recommendations, per-frame narratives, conclusion) are generated by Groq at PDF download time, with plain-text fallbacks when Groq is unavailable</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Key Challenges & Solutions</strong>
+                        <ul>
+                            <li><strong>Model sigmoid direction:</strong> MobileNetV2 was trained with HIGH sigmoid = REAL — without the inversion (<code>fake_prob = 1 − sigmoid</code>), all verdicts would be flipped. This inversion is applied consistently in both FastAPI and all demo/fallback code paths</li>
+                            <li><strong>Video cold-start latency:</strong> Large videos caused 30–90 second wait times. Solved by capping at 20 sampled frames, using batched CNN inference, and displaying a clear "Extracting frames…" typing indicator with time estimate</li>
+                            <li><strong>jsPDF text encoding:</strong> jsPDF's <code>doc.text()</code> silently fails on null/undefined values. Solved by building a <code>safeStr()</code> wrapper and a <code>T()</code> alias that coerce all values to strings before rendering</li>
+                            <li><strong>Aspect-ratio-aware frame cards in PDF:</strong> Fixed-height thumbnail rows caused face-cropping on non-16:9 frames. Solved by pre-decoding all thumbnails to their real pixel dimensions, computing per-row max heights, and rendering each thumbnail centred within its allocated area</li>
+                            <li><strong>Canvas timeline rendering timing:</strong> Canvas elements inserted into the DOM via innerHTML weren't ready for drawing. Solved using a MutationObserver on the messages container that triggers <code>drawTimeline()</code> only after the canvas is actually attached to the DOM</li>
+                        </ul>
+                    </div>
+
+                    <div class="case-section">
+                        <strong>Tech Stack</strong>
+                        <p>Python, Flask, FastAPI, Gunicorn, TensorFlow / Keras (MobileNetV2), OpenCV, Pillow, NumPy, Groq Cloud API (LLaMA 3.1-8b-instant / llama3-70b-8192), python-dotenv, Werkzeug, flask-cors, Vanilla JavaScript (ES2020+), HTML5 Canvas, jsPDF 2.5.1, CSS3 (Custom Properties, Grid, Flexbox, Animations)</p>
+                    </div>
+
+                    <div class="case-nav-buttons">
+                        <button class="nav-btn prevBtn" disabled>← Previous</button>
+                        <a href="/" class="nav-btn">🏠 Home</a>
+                        <button class="nav-btn nextBtn">Next →</button>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════════
+                     2. ENTERTAINMENT DASHBOARD
+                ══════════════════════════════════════ -->
+                <div class="case-card fade-up" id="entertainment">
                     <h2>Real-Time Entertainment Intelligence</h2>
                     <div class="case-tags">
                         <span>HTML / CSS / JS</span>
@@ -451,8 +558,6 @@
                             <li><strong>Audience Score Ring:</strong> Animated SVG stroke-dashoffset ring that fills dynamically, colour-coded green/gold/red by rating tier</li>
                             <li><strong>Cast & Crew Grid:</strong> Director/Creator highlighted in gold, full cast with profile photos, character names, and roles</li>
                             <li><strong>Season Browser:</strong> TV-only grid showing every season with poster, episode count, and air year</li>
-                            <li><strong>Production & Networks Panel:</strong> Company/network logos with country of origin</li>
-                            <li><strong>Responsive Design:</strong> Four breakpoints (desktop → tablet → mobile → small mobile) with a sticky search bar and back-to-home link on mobile</li>
                         </ul>
                     </div>
 
@@ -464,18 +569,6 @@
                             <li><strong>Chart.js 4.4:</strong> Six chart instances (cumulative line, period bar, financial bar, popularity bar, genre radar, episodes bar) with shared tooltip and scale defaults</li>
                             <li><strong>chartjs-adapter-date-fns:</strong> Enables time-axis charts with <code>type: "time"</code> for the revenue trend panels</li>
                             <li><strong>CSS Custom Properties:</strong> Full design token system (10 colour variables, layout variables) enabling consistent theming across all components</li>
-                            <li><strong>Animations:</strong> CSS <code>@keyframes fadeUp</code> with staggered <code>animation-delay</code> per card, SVG stroke transitions for the score ring, and width transitions for the profit bar</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Design Decisions</strong>
-                        <ul>
-                            <li><strong>Gold-on-dark palette:</strong> Chosen to evoke the premium feel of cinematic brands (Oscars, IMAX, Netflix dark mode) — gold (#c9a84c) as accent against a near-black (#07080d) background</li>
-                            <li><strong>Bebas Neue + DM Sans:</strong> Display font for stats/headings, humanist sans for body — a pairing that balances editorial weight with readability</li>
-                            <li><strong>Noise overlay:</strong> Subtle SVG fractalNoise texture at 0.4 opacity adds grain depth without impacting performance</li>
-                            <li><strong>Mobile poster fix:</strong> Sidebar poster uses <code>aspect-ratio: 2/3</code> + <code>object-position: top center</code> to always show the full poster without cropping faces</li>
-                            <li><strong>Modelled revenue:</strong> Rather than hiding the chart for unavailable data, a theatrically-plausible decay curve is rendered with a clear "Modelled distribution" label — keeping the dashboard always visually complete</li>
                         </ul>
                     </div>
 
@@ -484,8 +577,7 @@
                         <ul>
                             <li><strong>No weekly box office data:</strong> TMDB only provides a lifetime revenue total. Solved by modelling distribution using an exponential decay function with a 120-day theatrical window and a 12% home-video tail</li>
                             <li><strong>Chart instance memory leaks:</strong> Each new search destroys all six previous chart instances via a <code>destroyChart()</code> wrapper before re-creating them</li>
-                            <li><strong>Mobile image cropping:</strong> Fixed by replacing fixed-height poster containers with <code>aspect-ratio: 2/3</code> + <code>max-height</code> caps per breakpoint, ensuring faces are always visible</li>
-                            <li><strong>Three simultaneous search inputs:</strong> Desktop header, mobile sticky bar, and landing page all sync on selection — clicking any suggestion updates all three inputs simultaneously</li>
+                            <li><strong>Mobile image cropping:</strong> Fixed by replacing fixed-height poster containers with <code>aspect-ratio: 2/3</code> + <code>max-height</code> caps per breakpoint</li>
                         </ul>
                     </div>
 
@@ -495,14 +587,14 @@
                     </div>
 
                     <div class="case-nav-buttons">
-                        <button class="nav-btn prevBtn" disabled>← Previous</button>
+                        <button class="nav-btn prevBtn">← Previous</button>
                         <a href="/" class="nav-btn">🏠 Home</a>
                         <button class="nav-btn nextBtn">Next →</button>
                     </div>
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     2. AI WEB VULNERABILITY SCANNER
+                     3. AI WEB VULNERABILITY SCANNER
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="vuln-scanner">
                     <h2>AI Web Vulnerability Scanner</h2>
@@ -522,35 +614,15 @@
 
                     <div class="case-section">
                         <strong>Problem Statement</strong>
-                        <p>Manual penetration testing is slow, expensive, and hard to scale. Rule-based scanners miss context-dependent vulnerabilities and generate noisy false positives. This project combines a trained ML model with a real Groq LLM to create a scanner that understands page context, validates findings intelligently, and produces executive-grade reports — all runnable with a single <code>streamlit run app_ai.py</code> command.</p>
+                        <p>Manual penetration testing is slow, expensive, and hard to scale. Rule-based scanners miss context-dependent vulnerabilities and generate noisy false positives. This project combines a trained ML model with a real Groq LLM to create a scanner that understands page context, validates findings intelligently, and produces executive-grade reports.</p>
                     </div>
 
                     <div class="case-section">
                         <strong>Three-Layer Detection Pipeline</strong>
                         <ul>
                             <li><strong>Layer 1 — Random Forest ML Model:</strong> A trained scikit-learn Random Forest classifier predicts SQL Injection, XSS, or Misconfiguration with per-class probability scores. Only predictions above 60% confidence are surfaced as findings</li>
-                            <li><strong>Layer 2 — Traditional Pattern Detection:</strong> Regex and DOM heuristics scan page HTML for known dangerous patterns — <code>eval()</code>, <code>innerHTML=</code>, <code>document.write()</code>, GET-method forms, POST forms without CSRF tokens, and sensitive keywords in HTML comments</li>
+                            <li><strong>Layer 2 — Traditional Pattern Detection:</strong> Regex and DOM heuristics scan page HTML for known dangerous patterns — <code>eval()</code>, <code>innerHTML=</code>, <code>document.write()</code>, GET-method forms, POST forms without CSRF tokens</li>
                             <li><strong>Layer 3 — Groq AI Analysis (LLaMA 3.3 70B):</strong> The <code>GroqOrchestrator</code> sends HTML snippets, form structures, and script counts to Groq's API for deep contextual analysis, returning structured JSON vulnerability objects with CWE IDs, proof of concept, and remediation guidance</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Groq AI Orchestrator</strong>
-                        <ul>
-                            <li><strong>Domain Recognition:</strong> Uses LLaMA to intelligently parse any user input — full URLs, bare domains, subdomains, paths — and extract a clean domain with confidence score</li>
-                            <li><strong>Page Content Analysis:</strong> Sends truncated HTML + form/script metadata to Groq, receiving a JSON array of vulnerabilities with risk scores calculated by severity × exploitability × business impact × confidence</li>
-                            <li><strong>Vulnerability Validation:</strong> Each detected finding is sent back to Groq for a second-pass review, refining severity and filtering false positives</li>
-                            <li><strong>Executive Summary:</strong> Generates a 200–250 word business-readable summary with security posture rating, key findings, and immediate action items</li>
-                        </ul>
-                    </div>
-
-                    <div class="case-section">
-                        <strong>Subdomain Discovery &amp; Smart Crawler</strong>
-                        <ul>
-                            <li>crt.sh Certificate Transparency Logs + HackerTarget API + 20-word common subdomain wordlist</li>
-                            <li>30-thread <code>ThreadPoolExecutor</code> for parallel DNS resolution and HTTP reachability verification</li>
-                            <li>Smart Crawl mode prioritises security-relevant pages: <code>login</code>, <code>admin</code>, <code>upload</code>, <code>search</code>, <code>payment</code>, <code>api</code>, <code>profile</code></li>
-                            <li>Configurable scan depth (Quick / Standard / Deep / Comprehensive) with 5–30 pages per domain slider</li>
                         </ul>
                     </div>
 
@@ -577,7 +649,7 @@
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     3. CYBER THREAT DETECTION
+                     4. CYBER THREAT DETECTION
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="cyber">
                     <h2>Cyber Threat Detection Suite</h2>
@@ -626,7 +698,7 @@
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     4. SPOTIFY RECOMMENDATION
+                     5. SPOTIFY RECOMMENDATION
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="spotify">
                     <h2>Spotify Real-Time Recommendation System</h2>
@@ -680,7 +752,7 @@
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     5. CAR PRICE PREDICTION
+                     6. CAR PRICE PREDICTION
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="car">
                     <h2>Car Price Prediction</h2>
@@ -729,7 +801,7 @@
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     6. MOVIE RECOMMENDATION
+                     7. MOVIE RECOMMENDATION
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="movie">
                     <h2>Movie Recommender System</h2>
@@ -778,7 +850,7 @@
                 </div>
 
                 <!-- ══════════════════════════════════════
-                     7. IPL DASHBOARD
+                     8. IPL DASHBOARD
                 ══════════════════════════════════════ -->
                 <div class="case-card fade-up" id="ipl">
                     <h2>IPL Data Analysis Dashboard</h2>
@@ -834,8 +906,8 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
     <script>
-        // Project order matches archive.html exactly
-        const projectIds = ['entertainment', 'vuln-scanner', 'cyber', 'spotify', 'car', 'movie', 'ipl'];
+        // Project order — DeepScan first
+        const projectIds = ['deepscan', 'entertainment', 'vuln-scanner', 'cyber', 'spotify', 'car', 'movie', 'ipl'];
 
         const desktopLinks = document.querySelectorAll(".case-link");
         const mobileTabs   = document.querySelectorAll(".mobile-case-tab");
