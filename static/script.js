@@ -63,27 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!tabButtons.length || !indicator) return;
 
-        // Position indicator to match the currently-active button
         function moveIndicator(btn) {
             const nav  = btn.closest('.tab-nav');
             const isHorizontal = getComputedStyle(nav).flexDirection === 'row';
 
             if (isHorizontal) {
-                // mobile horizontal rail — move left
                 indicator.style.left   = btn.offsetLeft + 'px';
                 indicator.style.top    = '';
             } else {
-                // desktop vertical rail — move top
                 indicator.style.top    = btn.offsetTop + 'px';
                 indicator.style.left   = '';
             }
         }
 
-        // Set initial indicator position on the active tab
         const activeBtn = document.querySelector('.tab-btn.active');
         if (activeBtn) moveIndicator(activeBtn);
 
-        // Also reposition on resize (vertical ↔ horizontal switch)
         window.addEventListener('resize', () => {
             const current = document.querySelector('.tab-btn.active');
             if (current) moveIndicator(current);
@@ -93,11 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
             btn.addEventListener('click', () => {
                 const target = btn.dataset.tab;
 
-                // Update active button
                 tabButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                // Update active panel
                 tabPanels.forEach(panel => {
                     panel.classList.remove('active');
                     if (panel.id === 'tab-panel-' + target) {
@@ -105,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Slide indicator
                 moveIndicator(btn);
             });
         });
@@ -251,21 +243,18 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =====================
        CERTIFICATE MODAL
     ===================== */
-    // Make openModal and closeModal globally accessible
     window.openModal = function(certId) {
         const modal = document.getElementById('certModal');
         const modalImg = document.getElementById('modalImage');
 
         if (!modal || !modalImg) return;
 
-        // Get the certificate image from the card
         const certCard = document.getElementById(certId);
         if (!certCard) return;
 
         const certImage = certCard.querySelector('.cert-preview-img img');
         if (!certImage) return;
 
-        // Set modal image source to the certificate image
         modalImg.src = certImage.src;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -279,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = '';
     };
 
-    // Close modal on ESC key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const modal = document.getElementById('certModal');
@@ -289,7 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Close modal when clicking outside the image
     const certModal = document.getElementById('certModal');
     if (certModal) {
         certModal.addEventListener('click', function(e) {
@@ -356,3 +343,45 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+/* =====================
+   SHOW MORE / SHOW LESS PROJECTS
+===================== */
+window.toggleProjects = function() {
+    const hiddenCards = document.querySelectorAll('.project-card--hidden');
+    const btn = document.getElementById('show-more-btn');
+    const icon = document.getElementById('show-more-icon');
+
+    if (!hiddenCards.length || !btn) return;
+
+    const isExpanded = btn.getAttribute('data-expanded') === 'true';
+
+    if (!isExpanded) {
+        // Show hidden cards
+        hiddenCards.forEach((card, index) => {
+            card.style.display = 'flex';
+            // Trigger fade-up animation for newly shown cards
+            setTimeout(() => {
+                card.classList.add('appear');
+            }, index * 100);
+        });
+        btn.setAttribute('data-expanded', 'true');
+        btn.innerHTML = `Show Less <svg id="show-more-icon" class="show-more-icon rotated" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+    } else {
+        // Hide the extra cards
+        hiddenCards.forEach(card => {
+            card.style.display = 'none';
+            card.classList.remove('appear');
+        });
+        btn.setAttribute('data-expanded', 'false');
+        btn.innerHTML = `Show More <svg id="show-more-icon" class="show-more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`;
+
+        // Scroll back up to the projects grid when collapsing
+        const grid = document.getElementById('projects-grid');
+        if (grid) {
+            setTimeout(() => {
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    }
+};
