@@ -764,14 +764,13 @@ nav {
     display: flex;
     flex-direction: column;
     min-width: var(--tab-width);
-    /* The thin vertical track line */
     border-left: 2px solid var(--lightest-navy);
 }
 
-/* Sliding green indicator — absolutely positioned inside .tab-nav */
+/* Sliding green indicator */
 .tab-indicator {
     position: absolute;
-    left: -2px;                     /* sit right on the border-left edge */
+    left: -2px;
     top: 0;
     width: 2px;
     height: var(--tab-height);
@@ -814,7 +813,7 @@ nav {
 /* ── Right panel ── */
 .tab-panels {
     flex: 1;
-    min-width: 0;                   /* prevent flex overflow */
+    min-width: 0;
 }
 
 .tab-panel {
@@ -882,7 +881,7 @@ nav {
     align-items: center;
 }
 
-/* Duties list — ▹ bullets matching BC style */
+/* Duties list */
 .tab-panel__duties {
     list-style: none;
     padding: 0;
@@ -924,7 +923,7 @@ nav {
 }
 
 /* =====================
-   EXPERIENCE CTA (below tabs)
+   EXPERIENCE CTA
 ===================== */
 .experience-cta {
     text-align: center;
@@ -1277,6 +1276,75 @@ nav {
 }
 
 /* =====================
+   HIDDEN PROJECT CARDS
+===================== */
+.project-card--hidden {
+    display: none;
+}
+
+/* =====================
+   SHOW MORE / SHOW LESS BUTTON
+===================== */
+.show-more-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid var(--green);
+    border-radius: var(--border-radius);
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.show-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--green-tint);
+    transition: width 0.3s var(--easing);
+    z-index: 0;
+}
+
+.show-more-btn:hover::before {
+    width: 100%;
+}
+
+.show-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2);
+}
+
+.show-more-btn span,
+.show-more-btn svg {
+    position: relative;
+    z-index: 1;
+}
+
+.show-more-icon {
+    transition: transform 0.3s var(--easing);
+}
+
+.show-more-icon.rotated {
+    transform: rotate(180deg);
+}
+
+/* =====================
    CONTACT SECTION
 ===================== */
 .contact-container {
@@ -1587,12 +1655,10 @@ footer .footer-link:hover p {
         grid-template-columns: 1fr;
     }
 }
+
 /* =====================
    ARCHIVE LINK
-   Add this to the end of style.css
 ===================== */
-
-/* "view the archive →" link under Other Noteworthy Projects heading */
 .archive-link {
     display: block;
     width: fit-content;
