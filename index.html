@@ -80,14 +80,14 @@
                 <span></span>
             </div>
             <div class="nav-links" id="nav-links">
-    <a href="index.html#about"><span class="nav-number">01.</span> About</a>
-    <a href="index.html#experience"><span class="nav-number">02.</span> Experience</a>
-    <a href="index.html#skills"><span class="nav-number">03.</span> Skills</a>
-    <a href="index.html#work"><span class="nav-number">04.</span> Project</a>
-    <a href="index.html#contact"><span class="nav-number">05.</span> Contact</a>
-    <a href="certificates.html"><span class="nav-number">06.</span> Achivements</a>
-    <a href="resume.html" class="resume-btn">Resume</a>
-</div>
+                <a href="index.html#about"><span class="nav-number">01.</span> About</a>
+                <a href="index.html#experience"><span class="nav-number">02.</span> Experience</a>
+                <a href="index.html#skills"><span class="nav-number">03.</span> Skills</a>
+                <a href="index.html#work"><span class="nav-number">04.</span> Project</a>
+                <a href="index.html#contact"><span class="nav-number">05.</span> Contact</a>
+                <a href="certificates.html"><span class="nav-number">06.</span> Achivements</a>
+                <a href="resume.html" class="resume-btn">Resume</a>
+            </div>
         </nav>
     </header>
 
@@ -134,10 +134,10 @@
                     <ul class="skills-list fade-up">
                         <li>Python</li>
                         <li>SQL</li>
-                        <li>Pandas & NumPy</li>
+                        <li>Pandas &amp; NumPy</li>
                         <li>Scikit-Learn</li>
                         <li>Streamlit</li>
-                        <li>Power BI & Tableau</li>
+                        <li>Power BI &amp; Tableau</li>
                     </ul>
                 </div>
 
@@ -150,9 +150,7 @@
         </div>
     </section>
 
-    <!-- ===================== -->
-    <!-- EXPERIENCE SECTION    -->
-    <!-- ===================== -->
+    <!-- EXPERIENCE -->
     <section id="experience" class="section">
         <div class="container">
             <h2 class="section-heading fade-up">
@@ -160,10 +158,7 @@
                 Where I've Worked
             </h2>
 
-            <!-- Brittany Chiang–style tabbed experience -->
             <div class="experience-tabbed fade-up">
-
-                <!-- Left rail: tab buttons + sliding indicator -->
                 <div class="tab-nav" role="tablist">
                     <div class="tab-indicator"></div>
                     <button class="tab-btn active"
@@ -175,17 +170,13 @@
                     </button>
                 </div>
 
-                <!-- Right panel: job details -->
                 <div class="tab-panels">
-
                     <div class="tab-panel active" id="tab-panel-redkross" role="tabpanel">
-                        <!-- Title row -->
                         <h3 class="tab-panel__title">
                             Cyber Security Intern
                             <span class="tab-panel__company">@ RedKross Research Foundation</span>
                         </h3>
 
-                        <!-- Date + location -->
                         <p class="tab-panel__date">
                             <span class="tab-panel__date-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -198,23 +189,19 @@
                             </span>
                         </p>
 
-                        <!-- Duties list (BC uses ▹ bullets) -->
                         <ul class="tab-panel__duties">
                             <li>Developed and trained machine learning models to detect phishing URLs and malicious network traffic in real time, achieving 94% detection accuracy.</li>
                             <li>Built end-to-end cybersecurity dashboards using Python and Streamlit to visualize live threat analytics for the Security Operations team.</li>
                             <li>Performed vulnerability assessments on internal systems and produced detailed security reports with actionable remediation recommendations.</li>
                         </ul>
 
-                        <!-- Certificate link -->
                         <a href="certificates.html#redkross" class="tab-panel__cert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                             View Certificate
                         </a>
                     </div>
-
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -244,7 +231,7 @@
                     </div>
 
                     <div class="skill-category fade-up">
-                        <h3><span>▹</span> Tools & IDEs</h3>
+                        <h3><span>▹</span> Tools &amp; IDEs</h3>
                         <p>VS Code, PyCharm, Jupyter, Colab, Git</p>
                     </div>
 
@@ -265,47 +252,47 @@
                 Some Things I've Built
             </h2>
 
-            <!-- Featured Project 1 -->
+            <!-- Featured Project 1 — DeepScan -->
             <div class="featured-project fade-up">
                 <div class="project-content">
                     <p class="project-overline">Featured Project</p>
-                    <h3 class="project-title">Real-Time Entertainment Intelligence</h3>
+                    <h3 class="project-title">DeepScan — Deepfake Detector</h3>
                     <div class="project-description">
                         <p>
-                            A cinematic Movie &amp; TV Show analytics dashboard delivering deep intelligence
-                            on any title — box office financials, modelled revenue trends, budget vs. profit
-                            breakdowns, genre radar profiles, audience score rings, cast grids, season
-                            browsers, and popularity metrics. Powered by the TMDB API with dual Movie / TV
-                            mode, live search autocomplete with keyboard navigation, and a fully responsive
-                            gold-on-dark UI built in pure HTML, CSS, and JavaScript.
+                            A full-stack deepfake detection platform powered by a CNN (MobileNetV2) pipeline.
+                            Users upload images or videos and receive instant verdicts — fake probability scores,
+                            frame-by-frame analysis with timeline charts, Groq LLM explanations in plain English,
+                            and downloadable multi-page professional PDF reports. Runs entirely on a local
+                            Flask + FastAPI backend with demo mode when offline.
                         </p>
                     </div>
                     <ul class="project-tech-list">
-                        <li>HTML / CSS / JS</li>
-                        <li>TMDB API</li>
-                        <li>Chart.js</li>
-                        <li>Responsive Design</li>
+                        <li>Python</li>
+                        <li>Flask / FastAPI</li>
+                        <li>MobileNetV2 CNN</li>
+                        <li>Groq LLM</li>
+                        <li>jsPDF</li>
                     </ul>
                     <div class="project-links">
-                        <a href="https://github.com/Sanjay20057/Real-Time-Entertainment-Intelligence" target="_blank" rel="noopener" aria-label="GitHub">
+                        <a href="https://github.com/Sanjay20057/DeepScan" target="_blank" rel="noopener" aria-label="GitHub">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         </a>
-                        <a href="https://realtimeentertainmentintelligence.netlify.app/" target="_blank" rel="noopener" aria-label="Live Demo">
+                        <a href="https://sanjay72005-deepscan.hf.space" target="_blank" rel="noopener" aria-label="Live Demo">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                         </a>
-                        <a href="case_studies.html#entertainment" aria-label="Case Study">
+                        <a href="case_studies.html#deepscan" aria-label="Case Study">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         </a>
                     </div>
                 </div>
                 <div class="project-image">
-                    <a href="https://realtimeentertainmentintelligence.netlify.app/" target="_blank" rel="noopener">
-                        <img src="static/Entertainment.png" alt="Real-Time Entertainment Intelligence Dashboard" loading="lazy">
+                    <a href="https://sanjay72005-deepscan.hf.space" target="_blank" rel="noopener">
+                        <img src="static/Deepscan.png" alt="DeepScan AI Deepfake Detector" loading="lazy">
                     </a>
                 </div>
             </div>
 
-            <!-- Featured Project 2 -->
+            <!-- Featured Project 2 — Spotify -->
             <div class="featured-project reverse fade-up">
                 <div class="project-content">
                     <p class="project-overline">Featured Project</p>
@@ -342,7 +329,7 @@
                 </div>
             </div>
 
-            <!-- Featured Project 3 -->
+            <!-- Featured Project 3 — AI Web Vulnerability Scanner -->
             <div class="featured-project fade-up">
                 <div class="project-content">
                     <p class="project-overline">Featured Project</p>
@@ -384,15 +371,46 @@
             <div class="other-projects">
                 <h3 class="other-projects-heading fade-up">Other Noteworthy Projects</h3>
                 <a href="archive.html" class="archive-link fade-up">view the archive</a>
-                <div class="projects-grid">
 
+                <div class="projects-grid" id="projects-grid">
+
+                    <!-- Card 1 — Real-Time Entertainment Intelligence (always visible) -->
+                    <div class="project-card fade-up">
+                        <div class="project-card-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            <div class="project-card-links">
+                                <a href="https://github.com/Sanjay20057/Real-Time-Entertainment-Intelligence" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://real-time-entertainment-intelligence.up.railway.app/" target="_blank" rel="noopener" aria-label="Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="case_studies.html#entertainment" aria-label="Case Study">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
+                            </div>
+                        </div>
+                        <h4>Real-Time Entertainment Intelligence</h4>
+                        <p>Cinematic analytics dashboard delivering deep intelligence on any movie or TV show — box office financials, revenue trend modelling, genre radar profiles, cast grids, and season browsers. Pure HTML/CSS/JS with TMDB API.</p>
+                        <ul class="project-card-tech">
+                            <li>HTML/CSS/JS</li><li>TMDB API</li><li>Chart.js</li><li>Responsive Design</li>
+                        </ul>
+                    </div>
+
+                    <!-- Card 2 — Cyber Threat Detection Suite (always visible) -->
                     <div class="project-card fade-up">
                         <div class="project-card-header">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                             <div class="project-card-links">
-                                <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                                <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" rel="noopener" aria-label="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                                <a href="case_studies.html#cyber" aria-label="Case Study"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></a>
+                                <a href="https://github.com/Sanjay20057/Cyber-Threat-Detection-Suite" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://cyber-threat-detection-suite.streamlit.app/" target="_blank" rel="noopener" aria-label="Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="case_studies.html#cyber" aria-label="Case Study">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
                             </div>
                         </div>
                         <h4>Cyber Threat Detection Suite</h4>
@@ -402,13 +420,20 @@
                         </ul>
                     </div>
 
+                    <!-- Card 3 — Used Car Price Prediction (always visible) -->
                     <div class="project-card fade-up">
                         <div class="project-card-header">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                             <div class="project-card-links">
-                                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                                <a href="case_studies.html#car" aria-label="Case Study"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></a>
+                                <a href="https://github.com/Sanjay20057/Car-Price-Prediction" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://car-price-prediction-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="case_studies.html#car" aria-label="Case Study">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
                             </div>
                         </div>
                         <h4>Used Car Price Prediction</h4>
@@ -418,13 +443,20 @@
                         </ul>
                     </div>
 
-                    <div class="project-card fade-up">
+                    <!-- Card 4 — Movie Recommendation System (hidden by default) -->
+                    <div class="project-card fade-up project-card--hidden">
                         <div class="project-card-header">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                             <div class="project-card-links">
-                                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                                <a href="case_studies.html#movie" aria-label="Case Study"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></a>
+                                <a href="https://github.com/Sanjay20057/Movie-Recommender-System" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://movie-recommender-system-2005.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="case_studies.html#movie" aria-label="Case Study">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
                             </div>
                         </div>
                         <h4>Movie Recommendation System</h4>
@@ -434,13 +466,20 @@
                         </ul>
                     </div>
 
-                    <div class="project-card fade-up">
+                    <!-- Card 5 — IPL Data Analysis Dashboard (hidden by default) -->
+                    <div class="project-card fade-up project-card--hidden">
                         <div class="project-card-header">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                             <div class="project-card-links">
-                                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" rel="noopener" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                                <a href="case_studies.html#ipl" aria-label="Case Study"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></a>
+                                <a href="https://github.com/Sanjay20057/IPL_Analysis" target="_blank" rel="noopener" aria-label="GitHub">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                                <a href="https://iplanalysis2008-2019.streamlit.app" target="_blank" rel="noopener" aria-label="Live Demo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                                <a href="case_studies.html#ipl" aria-label="Case Study">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                                </a>
                             </div>
                         </div>
                         <h4>IPL Data Analysis Dashboard</h4>
@@ -451,6 +490,17 @@
                     </div>
 
                 </div>
+
+                <!-- Show More / Show Less Button -->
+                <div class="show-more-container">
+                    <button id="show-more-btn" class="cta-button" onclick="toggleProjects()">
+                        Show More
+                        <svg class="show-more-icon" id="show-more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
             </div>
         </div>
     </section>
@@ -482,7 +532,7 @@
             </a>
         </div>
         <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
-            <p>Designed & Built by Sanjay Sharma</p>
+            <p>Designed &amp; Built by Sanjay Sharma</p>
         </a>
     </footer>
 
