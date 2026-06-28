@@ -1683,3 +1683,31 @@ footer .footer-link:hover p {
 .archive-link:hover::after {
     letter-spacing: 3px;
 }
+
+.tab-panel__company a {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tab-panel__company a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background-color: #64ffda; /* her signature mint/green */
+  transition: width 0.28s ease-in-out;
+}
+
+.tab-panel__company a:hover,
+.tab-panel__company a:focus {
+  color: #64ffda;
+}
+
+.tab-panel__company a:hover::after,
+.tab-panel__company a:focus::after {
+  width: 100%;
+}
