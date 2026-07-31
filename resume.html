@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume | Sanjay Sharma</title>
+    <link rel="icon" type="image/png" href="static/Logo/Logo.png" />
+    <link rel="stylesheet" href="static/style.css" />
+    <script defer src="static/script.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P3Z9PVVKK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7P3Z9PVVKK');
+</script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Match portfolio dark theme */
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+        }
+
+        /* Main Container */
+        .resume-wrapper {
+            min-height: 100vh;
+            padding-top: var(--nav-height);
+        }
+
+        .resume-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 150px;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            color: var(--green);
+            font-family: var(--font-mono);
+            font-size: var(--fz-sm);
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 10px 0;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+            transform: translateX(-5px);
+        }
+
+        .back-link::before {
+            content: "← ";
+        }
+
+        /* Header Section */
+        .resume-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .resume-header h1 {
+            color: var(--lightest-slate);
+            font-size: clamp(40px, 5vw, 60px);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .resume-header p {
+            color: var(--slate);
+            font-size: var(--fz-xl);
+            margin-bottom: 30px;
+        }
+
+        /* Action Buttons */
+        .resume-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: var(--fz-sm);
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background-color: var(--green-tint);
+            transform: translateY(-3px);
+            box-shadow: 4px 4px 0 0 var(--green);
+        }
+
+        .action-btn.primary {
+            background-color: var(--green-tint);
+        }
+
+        /* Resume Viewer Card */
+        .resume-viewer {
+            background-color: var(--light-navy);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 10px 30px -15px var(--navy-shadow);
+            transition: var(--transition);
+        }
+
+        .resume-viewer:hover {
+            box-shadow: 0 20px 30px -15px var(--navy-shadow);
+        }
+
+        .resume-viewer img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .resume-viewer img:hover {
+            transform: scale(1.02);
+        }
+
+        /* ─── MODAL (from certificates.html) ─── */
+        .resume-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10,25,47,.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .resume-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .resume-modal-content {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            animation: modalSlideUp .4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .resume-modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 24px 48px rgba(0,0,0,.5);
+        }
+
+        .resume-modal-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--light-navy);
+            border: 1px solid var(--green);
+            color: var(--green);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            z-index: 1001;
+        }
+
+        .resume-modal-close:hover {
+            background: var(--green);
+            color: var(--navy);
+            transform: rotate(90deg);
+        }
+
+        .resume-modal-close svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1),
+                        transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1080px) {
+            .resume-container {
+                padding: 60px 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 40px 50px;
+            }
+
+            .resume-header h1 {
+                font-size: 40px;
+            }
+
+            .resume-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .resume-viewer {
+                padding: 20px;
+            }
+
+            .resume-modal-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .resume-modal-content {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .resume-container {
+                padding: 30px 25px;
+            }
+
+            .resume-header h1 {
+                font-size: 32px;
+            }
+
+            .resume-header p {
+                font-size: var(--fz-md);
+            }
+
+            .resume-modal-content {
+                max-width: 95%;
+            }
+        }
+
+        /* Icon styles */
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Touch device optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .resume-viewer img:hover {
+                transform: none;
+            }
+
+            .resume-viewer img:active {
+                transform: scale(1.02);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- MAIN CONTENT -->
+<div class="resume-wrapper">
+    <div class="resume-container">
+
+        <!-- Back Link -->
+        <a href="index.html" class="back-link">Back to Portfolio</a>
+
+        <!-- Header -->
+        <div class="resume-header">
+            <h1 class="fade-up">My Resume</h1>
+            <p class="fade-up">Data Scientist | Machine Learning Engineer | Python Developer</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="resume-actions fade-up">
+            <a href="static/Sanjay_Resume.pdf" download class="action-btn primary">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download PDF
+            </a>
+            <a href="case_studies.html#spotify" class="action-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                View Case Studies
+            </a>
+            <a href="index.html#contact" class="action-btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Contact Me
+            </a>
+        </div>
+
+        <!-- Resume Viewer -->
+        <div class="resume-viewer fade-up">
+            <img src="static/Resume_Image/Sanjay_Resume_image.jpg"
+                 alt="Sanjay Sharma Resume"
+                 loading="lazy"
+                 onclick="openResumeModal()">
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal for full resume view -->
+<div class="resume-modal" id="resumeModal">
+    <button class="resume-modal-close" onclick="closeResumeModal(); event.stopPropagation();">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+    </button>
+    <div class="resume-modal-content" onclick="event.stopPropagation()">
+        <img id="modalResumeImage" src="static/Resume_Image/Sanjay_Resume_image.jpg" alt="Sanjay Sharma Resume - Full View">
+    </div>
+</div>
+
+<script>
+// Mobile menu functionality (from your existing script.js)
+const mobileMenu = document.getElementById("mobile-menu");
+const navLinks = document.getElementById("nav-links");
+
+if (mobileMenu && navLinks) {
+    mobileMenu.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+            navLinks.classList.remove("active");
+            mobileMenu.classList.remove("active");
+        }
+    });
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="/#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(2);
+        window.location.href = '/' + this.getAttribute('href').substring(1);
+    });
+});
+
+// Resume Modal Functions
+function openResumeModal() {
+    console.log('Opening resume modal');
+    const modal = document.getElementById('resumeModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeResumeModal() {
+    console.log('Closing resume modal');
+    const modal = document.getElementById('resumeModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal when clicking on the background
+document.getElementById('resumeModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeResumeModal();
+    }
+});
+
+// Close modal on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('resumeModal');
+        if (modal && modal.classList.contains('active')) {
+            closeResumeModal();
+        }
+    }
+});
+
+// Fade-up animations on page load
+window.addEventListener('load', () => {
+    const fadeElements = document.querySelectorAll('.fade-up');
+    fadeElements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('appear');
+        }, index * 100);
+    });
+});
+
+// Log when page loads
+console.log('Resume page loaded successfully');
+</script>
+
+<!-- ENHANCED FOOTER -->
+<footer class="fade-up">
+    <!-- Mobile Social Icons -->
+    <div class="footer-social-mobile">
+        <a href="https://github.com/Sanjay20057" target="_blank" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sanjay20057" target="_blank" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:workingwithsanjay@gmail.com" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+    </div>
+
+    <!-- Footer Text with GitHub Link -->
+    <a href="https://github.com/Sanjay20057/Portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
+        <p>Designed & Built by Sanjay Sharma</p>
+    </a>
+</footer>
+
+</body>
+</html>
